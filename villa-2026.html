@@ -63,24 +63,22 @@
     text-decoration: none;
   }
 
-  .nav-back {
+  .nav-links {
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+  }
+
+  .nav-links a {
     font-size: 0.68rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--black);
     text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
     transition: opacity 0.3s;
   }
 
-  .nav-back:hover { opacity: 0.4; }
-
-  .nav-back::before {
-    content: '←';
-    font-size: 0.8rem;
-  }
+  .nav-links a:hover { opacity: 0.5; }
 
   /* HERO IMAGE */
   .project-hero {
@@ -306,13 +304,14 @@
       font-weight: 500;
     }
 
-    /* "Tous les projets" — même style que les liens du menu */
-    .nav-back {
+    .nav-links {
+      gap: 1.4rem;
+    }
+
+    .nav-links a {
       font-size: 0.6rem;
       letter-spacing: 0.12em;
     }
-
-    .nav-back::before { content: none; }
 
     /* HERO — padding latéral identique aux images de la page d'accueil */
     .project-hero {
@@ -335,6 +334,9 @@
     }
 
     .project-right { padding-left: 0; padding-top: 0; }
+
+    .project-title { font-size: 2rem; }
+    .project-subtitle { font-size: 1rem; margin-bottom: 2rem; }
 
     /* CONTACT mobile */
     .section-contact {
@@ -359,7 +361,11 @@
 
 <nav>
   <a href="index.html" class="nav-logo">Louis Reynaerts Architecture</a>
-  <a href="index.html" class="nav-back">Tous les projets</a>
+  <ul class="nav-links">
+    <li><a href="index.html#projets">Projets</a></li>
+    <li><a href="index.html#approche">Approche</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
 </nav>
 
 <!-- HERO -->
