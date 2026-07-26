@@ -192,45 +192,78 @@
     color: var(--black);
   }
 
-  /* CONTACT CTA */
-  .project-cta {
-    margin-top: 4rem;
-    padding-top: 3rem;
-    border-top: 1px solid #e8e5e0;
+  /* CONTACT */
+  .section-contact {
+    background: var(--black);
+    color: var(--white);
+    padding: 8rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 6rem;
   }
 
-  .cta-label {
+  .contact-heading {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .contact-heading em {
+    font-style: italic;
+    display: block;
+    color: var(--gray);
+  }
+
+  .contact-cta {
+    display: inline-block;
+    margin-top: 2.5rem;
+    padding: 1rem 2.8rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--white);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s, border-color 0.3s;
+  }
+
+  .contact-cta:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.7);
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 2.5rem; }
+
+  .contact-label {
     font-size: 0.62rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--gray);
-    margin-bottom: 1rem;
-    display: block;
+    margin-bottom: 0.5rem;
   }
 
-  .cta-text {
+  .contact-value {
     font-family: var(--serif);
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin-bottom: 2rem;
-    line-height: 1.3;
-  }
-
-  .cta-text em { font-style: italic; color: var(--gray); }
-
-  .cta-btn {
-    display: inline-block;
-    padding: 0.9rem 2.5rem;
-    background: var(--black);
+    font-size: 1.1rem;
     color: var(--white);
-    font-size: 0.62rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: opacity 0.3s;
   }
 
-  .cta-btn:hover { opacity: 0.7; }
+  .contact-divider {
+    width: 40px;
+    height: 1px;
+    background: #333;
+  }
+
+  .section-number-contact {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #555;
+    display: block;
+    margin-bottom: 3rem;
+  }
 
   /* FOOTER */
   footer {
@@ -257,14 +290,40 @@
 
   /* MOBILE */
   @media (max-width: 768px) {
+    /* NAV — identique page d'accueil */
     nav {
       flex-direction: column;
       align-items: flex-start;
       padding: 1.2rem 1.5rem;
-      gap: 0.4rem;
+      gap: 0.5rem;
     }
 
-    .project-hero { height: 55vw; min-height: 260px; }
+    .nav-logo {
+      font-size: 1.35rem;
+      font-weight: 500;
+    }
+
+    /* "Tous les projets" — même style que les liens du menu */
+    .nav-back {
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+    }
+
+    .nav-back::before { content: none; }
+
+    /* HERO — padding latéral identique aux images de la page d'accueil */
+    .project-hero {
+      height: auto;
+      aspect-ratio: 4/3;
+      padding: 0 1.5rem;
+      background: var(--white);
+      margin-top: 110px;
+    }
+
+    .project-hero img {
+      object-fit: cover;
+      border-radius: 0;
+    }
 
     .project-content {
       grid-template-columns: 1fr;
@@ -274,7 +333,22 @@
 
     .project-right { padding-left: 0; padding-top: 0; }
 
+    /* CONTACT mobile */
+    .section-contact {
+      grid-template-columns: 1fr;
+      padding: 4rem 1.5rem;
+      gap: 3rem;
+      margin-top: 4.5rem;
+    }
+
+    .contact-heading { font-size: 2.8rem; }
+
     footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .nav-logo { font-size: 1.2rem; }
+    .contact-heading { font-size: 2.2rem; }
   }
 </style>
 </head>
@@ -339,14 +413,39 @@
       </div>
     </div>
 
-    <div class="project-cta">
-      <span class="cta-label">Un projet similaire ?</span>
-      <p class="cta-text">Discutons de votre<br><em>projet.</em></p>
-      <a href="https://calendly.com/louisreynaerts-info/30min" target="_blank" class="cta-btn">Prendre rendez-vous</a>
-    </div>
   </div>
 
 </div>
+
+<!-- CONTACT -->
+<section class="section-contact">
+  <div>
+    <span class="section-number-contact">03 — Contact</span>
+    <div>
+      <h2 class="contact-heading">
+        Un projet ?<br>
+        <em>Parlons-en.</em>
+      </h2>
+      <a href="https://calendly.com/louisreynaerts-info/30min" target="_blank" class="contact-cta">Prendre rendez-vous</a>
+    </div>
+  </div>
+  <div class="contact-info">
+    <div class="contact-group">
+      <div class="contact-label">Adresse</div>
+      <div class="contact-value">Chaussée de Waterloo 792<br>1180 Uccle, Belgique</div>
+    </div>
+    <div class="contact-divider"></div>
+    <div class="contact-group">
+      <div class="contact-label">Email</div>
+      <div class="contact-value">info@louisreynaerts.com</div>
+    </div>
+    <div class="contact-divider"></div>
+    <div class="contact-group">
+      <div class="contact-label">Téléphone</div>
+      <div class="contact-value">+32 472 94 71 20</div>
+    </div>
+  </div>
+</section>
 
 <footer>
   <span>© 2026 Louis Reynaerts Architecture</span>
