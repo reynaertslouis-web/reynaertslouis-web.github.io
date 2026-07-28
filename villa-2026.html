@@ -12,7 +12,7 @@
 
   :root {
     --black: #0a0a0a;
-    --white: #fafaf8;
+    --white: #ffffff;
     --gray: #c8c5be;
     --light: #f0ede8;
     --serif: 'EB Garamond', Georgia, serif;
@@ -104,9 +104,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
-    padding: 7rem 4rem;
+    padding: 3rem 4rem 7rem;
     max-width: 1400px;
     margin: 0 auto;
+    background: #ffffff;
   }
 
   .project-left {}
@@ -122,9 +123,9 @@
 
   .project-title {
     font-family: var(--serif);
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
     font-weight: 400;
-    line-height: 1.1;
+    line-height: 1.4;
     margin-bottom: 1rem;
   }
 
@@ -152,14 +153,49 @@
   }
 
   /* FICHE TECHNIQUE */
-  .fiche-title {
+
+  .fiche-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: none;
+    border: none;
+    border-top: 1px solid #e8e5e0;
+    border-bottom: 1px solid #e8e5e0;
+    padding: 1rem 0;
+    cursor: pointer;
+    margin-bottom: 0;
+  }
+
+  .fiche-toggle span:first-child {
     font-size: 0.62rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--gray);
-    margin-bottom: 2.5rem;
-    display: block;
   }
+
+  .fiche-toggle-icon {
+    font-size: 1rem;
+    color: var(--gray);
+    transition: transform 0.3s;
+    line-height: 1;
+  }
+
+  .fiche-toggle.open .fiche-toggle-icon {
+    transform: rotate(45deg);
+  }
+
+  .fiche-toggle.open {
+    border-bottom: none;
+  }
+
+  .fiche-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
 
   .fiche-grid {
     display: flex;
@@ -277,6 +313,73 @@
     letter-spacing: 0.1em;
   }
 
+
+  .footer-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer-link {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    transition: color 0.3s;
+  }
+
+  .footer-link:hover { color: var(--white); }
+
+  .footer-sep {
+    color: #333;
+    font-size: 0.65rem;
+  }
+
+
+  .footer-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer-link {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    transition: color 0.3s;
+  }
+
+  .footer-link:hover { color: var(--white); }
+
+  .footer-sep {
+    color: #333;
+    font-size: 0.65rem;
+  }
+
+
+  /* FOOTER */
+  .footer-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer-link {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-link:hover { color: var(--white); }
+
+  .footer-sep {
+    color: #333;
+    font-size: 0.6rem;
+  }
+
   /* ANIMATIONS */
   .fade-in {
     opacity: 0;
@@ -380,7 +483,6 @@
 <div class="project-content">
 
   <div class="project-left">
-    <span class="project-label fade-in">Villa — Nouvelle construction</span>
     <h1 class="project-title fade-in delay-1">Rhode-Saint-Genèse</h1>
     <p class="project-subtitle fade-in delay-2">Belgique, 2026</p>
     <p class="project-description fade-in delay-3">
@@ -396,8 +498,11 @@
   </div>
 
   <div class="project-right fade-in delay-2">
-    <span class="fiche-title">Fiche technique</span>
-    <div class="fiche-grid">
+    <button class="fiche-toggle" onclick="this.classList.toggle('open'); document.getElementById('ficheGrid').style.display = document.getElementById('ficheGrid').style.display === 'none' ? 'flex' : 'none'">
+      <span>Fiche technique</span>
+      <span class="fiche-toggle-icon">+</span>
+    </button>
+    <div class="fiche-grid" id="ficheGrid" style="display:none;">
       <div class="fiche-row">
         <span class="fiche-key">Type</span>
         <span class="fiche-value">Villa unifamiliale</span>
@@ -460,6 +565,11 @@
 
 <footer>
   <span>© 2026 Louis Reynaerts Architecture</span>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/louis.reynaerts.architecture/" target="_blank" class="footer-link">Instagram</a>
+    <span class="footer-sep">—</span>
+    <a href="https://wa.me/message/OGYVXKG6735FF1" target="_blank" class="footer-link">WhatsApp</a>
+  </div>
   <span>Bruxelles — Belgique</span>
 </footer>
 
