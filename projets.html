@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="format-detection" content="telephone=no">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Villa Rhode-Saint-Genèse 2026 — Nouvelle construction résidentielle haut de gamme. Louis Reynaerts Architecture, Belgique.">
-<title>Villa — Rhode-Saint-Genèse 2026 | Louis Reynaerts Architecture</title>
+<meta name="description" content="Projets — Louis Reynaerts Architecture. Réalisations résidentielles haut de gamme en Belgique.">
+<title>Projets | Louis Reynaerts Architecture</title>
 <link rel="icon" type="image/svg+xml" href="images/favicon-lr.svg">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,7 +32,7 @@
     src: url('fonts/EBGaramond-Italic.ttf') format('truetype');
   }
 
-  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  html { scroll-behavior: smooth; scroll-padding-top: 130px; }
 
   body {
     background: var(--white);
@@ -79,163 +79,157 @@
   }
 
   .nav-links a:hover { opacity: 0.5; }
+  .nav-links a.active { opacity: 0.35; }
 
-  /* HERO */
-  .project-hero {
-    margin-top: 80px;
-    width: 100%;
-    background: var(--white);
-    padding: 0 4rem;
-    box-sizing: border-box;
+  /* PAGE HEADER */
+  .page-header {
+    padding: 7rem 4rem 3rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid #e8e5e0;
   }
 
-  .project-hero img {
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: contain;
-    object-position: center;
-    display: block;
-    background: var(--white);
+  .page-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 400;
   }
 
-  /* INTRO */
-  .project-intro {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    padding: 5rem 4rem 4rem;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
-  .project-intro-left {}
-
-  .project-number {
+  .project-count {
     font-size: 0.62rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--gray);
-    display: block;
-    margin-bottom: 1.5rem;
   }
 
-  .project-title {
+  /* PROJECTS LIST — style HVH: image + meta en ligne */
+  .projects-list {
+    padding: 0 4rem;
+  }
+
+  .project-entry {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-bottom: 1px solid #e8e5e0;
+    text-decoration: none;
+    color: var(--black);
+    transition: opacity 0.3s;
+  }
+
+  .project-entry:hover { opacity: 0.75; }
+
+  .project-entry:hover .project-entry-img img {
+    transform: scale(1.03);
+  }
+
+  .project-entry-img {
+    overflow: hidden;
+    aspect-ratio: 16/10;
+  }
+
+  .project-entry-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Placeholder */
+  .project-entry-placeholder {
+    aspect-ratio: 16/10;
+    background: var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .placeholder-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  .project-entry-meta {
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .project-entry-type {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 1.2rem;
+  }
+
+  .project-entry-title {
     font-family: var(--serif);
-    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-size: clamp(1.8rem, 2.5vw, 2.5rem);
     font-weight: 400;
     line-height: 1.15;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
   }
 
-  .project-subtitle {
+  .project-entry-location {
     font-family: var(--serif);
-    font-size: 1rem;
     font-style: italic;
+    font-size: 1rem;
     color: var(--gray);
-    margin-bottom: 3rem;
-  }
-
-  .project-chapeau {
-    font-size: 0.9rem;
-    line-height: 1.85;
-    color: #333;
-    font-weight: 400;
     margin-bottom: 2rem;
   }
 
-  .project-body {
-    font-size: 0.85rem;
-    line-height: 1.9;
+  .project-entry-desc {
+    font-size: 0.82rem;
+    line-height: 1.8;
     color: #666;
+    max-width: 380px;
   }
 
-  /* FICHE */
-  .project-intro-right {
-    padding-top: 3.5rem;
-  }
-
-  .fiche-toggle {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    background: none;
-    border: none;
-    border-top: 1px solid #e8e5e0;
-    border-bottom: 1px solid #e8e5e0;
-    padding: 1rem 0;
-    cursor: pointer;
-    margin-bottom: 0;
-  }
-
-  .fiche-toggle span:first-child {
-    font-size: 0.62rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gray);
-  }
-
-  .fiche-toggle .fiche-icon {
-    font-size: 1.2rem;
-    color: var(--gray);
-    transition: transform 0.3s;
-    font-weight: 300;
-  }
-
-  .fiche-toggle.open .fiche-icon { transform: rotate(45deg); }
-
-  .fiche-content {
-    display: none;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid #e8e5e0;
-  }
-
-  .fiche-content.open { display: block; }
-
-  .fiche-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0.8rem 0;
-    border-bottom: 1px solid #f0ede8;
-  }
-
-  .fiche-row:last-child { border-bottom: none; }
-
-  .fiche-key {
-    font-size: 0.62rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gray);
-  }
-
-  .fiche-value {
-    font-family: var(--serif);
-    font-size: 1rem;
-    color: var(--black);
-  }
-
-  /* TAGS */
-  .project-tags {
+  .project-entry-arrow {
     margin-top: 2.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .tag {
-    font-size: 0.6rem;
-    letter-spacing: 0.12em;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--gray);
-    border: 1px solid #e8e5e0;
-    padding: 0.35rem 0.8rem;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
   }
 
-  /* DIVIDER */
-  .divider {
-    height: 1px;
-    background: #e8e5e0;
-    margin: 0 4rem;
+  .project-entry-arrow::after {
+    content: '→';
+    font-size: 0.9rem;
+    transition: transform 0.3s;
+  }
+
+  .project-entry:hover .project-entry-arrow::after {
+    transform: translateX(4px);
+  }
+
+  /* Alternate: odd entries have image right */
+  .project-entry.reverse {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .project-entry.reverse .project-entry-img {
+    order: 2;
+  }
+
+  .project-entry.reverse .project-entry-meta {
+    order: 1;
+  }
+
+  /* COMING SOON entry */
+  .project-entry.coming-soon {
+    pointer-events: none;
+    opacity: 0.5;
   }
 
   /* CONTACT */
@@ -247,6 +241,7 @@
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 6rem;
+    margin-top: 6rem;
   }
 
   .section-number {
@@ -314,28 +309,15 @@
   }
 
   .footer-links { display: flex; align-items: center; gap: 1rem; }
-
-  .footer-link {
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    color: var(--gray);
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-
+  .footer-link { font-size: 0.65rem; letter-spacing: 0.1em; color: var(--gray); text-decoration: none; transition: color 0.3s; }
   .footer-link:hover { color: var(--white); }
   .footer-sep { color: #333; font-size: 0.6rem; }
 
   /* ANIMATIONS */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.9s ease, transform 0.9s ease;
-  }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.9s ease, transform 0.9s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
   .delay-1 { transition-delay: 0.15s; }
   .delay-2 { transition-delay: 0.3s; }
-  .delay-3 { transition-delay: 0.45s; }
 
   /* MOBILE */
   @media (max-width: 768px) {
@@ -353,45 +335,32 @@
     .nav-links { gap: 1.4rem; }
     .nav-links a { font-size: 0.6rem; letter-spacing: 0.12em; }
 
-    .project-hero {
-      padding: 0 1.5rem 1.5rem;
-      margin-top: 110px;
-    }
+    .page-header { padding: 7rem 1.5rem 2rem; }
 
-    .project-hero img {
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      object-position: 60% center;
-    }
+    .projects-list { padding: 0 1.5rem; }
 
-    .project-intro {
+    .project-entry,
+    .project-entry.reverse {
       grid-template-columns: 1fr;
-      gap: 3rem;
-      padding: 0 1.5rem 3rem;
     }
 
-    .project-intro-left { padding-top: 0; }
-    .project-intro-right { padding-top: 0; }
+    .project-entry.reverse .project-entry-img { order: 0; }
+    .project-entry.reverse .project-entry-meta { order: 1; }
 
-    .project-title { font-size: 1.4rem; margin-top: 1rem; }
-    .project-subtitle { font-size: 0.95rem; }
+    .project-entry-meta { padding: 2rem 0; }
+
+    .project-entry-title { font-size: 1.6rem; }
 
     .section-contact {
       grid-template-columns: 1fr;
       padding: 4rem 1.5rem;
       gap: 3rem;
+      margin-top: 3rem;
     }
 
     .contact-heading { font-size: 2.8rem; }
 
-    .divider { margin: 0 1.5rem; }
-
-    footer {
-      padding: 1.5rem;
-      flex-direction: column;
-      gap: 0.5rem;
-      text-align: center;
-    }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
   }
 
   @media (max-width: 480px) {
@@ -407,82 +376,56 @@
   <a href="index.html" class="nav-logo">Louis Reynaerts Architecture</a>
   <ul class="nav-links">
     <li><a href="index.html">Accueil</a></li>
-    <li><a href="projets.html">Projets</a></li>
+    <li><a href="projets.html" class="active">Projets</a></li>
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
-<div class="project-hero">
-  <img src="images/villa-2026.jpg"
-       alt="Villa Rhode-Saint-Genèse 2026 — Louis Reynaerts Architecture, nouvelle construction résidentielle haut de gamme en Belgique" />
+<!-- PAGE HEADER -->
+<div class="page-header fade-in">
+  <h1 class="page-title">Réalisations</h1>
+  <span class="project-count">2 projets</span>
 </div>
 
-<!-- INTRO -->
-<div class="project-intro">
+<!-- PROJECTS LIST -->
+<div class="projects-list">
 
-  <div class="project-intro-left fade-in">
-    <span class="project-number">Villa — Nouvelle construction</span>
-    <h1 class="project-title">Rhode-Saint-Genèse</h1>
-    <p class="project-subtitle">Belgique, 2026</p>
-
-    <p class="project-chapeau">
-      Cette villa contemporaine s'inscrit dans un écrin de verdure à Rhode-Saint-Genèse.
-      Le projet articule volumes purs et matériaux nobles — brique claire, bois sombre,
-      pierre naturelle — dans une recherche constante d'équilibre entre intérieur et extérieur.
-    </p>
-
-    <p class="project-body">
-      La conception intègre dès l'origine l'architecture d'intérieur, assurant une cohérence
-      totale entre les espaces de vie, les ambiances lumineuses et le jardin. Chaque détail,
-      de la menuiserie aux revêtements de sol, est pensé comme partie intégrante d'un tout.
-    </p>
-
-    <div class="project-tags">
-      <span class="tag">Nouvelle construction</span>
-      <span class="tag">Toit plat</span>
-      <span class="tag">Brique claire</span>
-      <span class="tag">Architecture d'intérieur</span>
-      <span class="tag">Villa unifamiliale</span>
+  <!-- Projet 1 — Villa RSG 2026 -->
+  <a href="villa-2026.html" class="project-entry fade-in">
+    <div class="project-entry-img">
+      <img src="images/villa-2026.png"
+           alt="Villa Rhode-Saint-Genèse 2026 — Louis Reynaerts Architecture" />
     </div>
-  </div>
+    <div class="project-entry-meta">
+      <span class="project-entry-type">Villa — Nouvelle construction</span>
+      <h2 class="project-entry-title">Rhode-Saint-Genèse</h2>
+      <p class="project-entry-location">Belgique, 2026</p>
+      <p class="project-entry-desc">
+        Villa contemporaine en brique claire, articulant volumes purs et matériaux nobles
+        dans un écrin de verdure. Architecture et intérieur conçus en cohérence totale.
+      </p>
+      <span class="project-entry-arrow">Voir le projet</span>
+    </div>
+  </a>
 
-  <div class="project-intro-right fade-in delay-2">
-    <button class="fiche-toggle" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');">
-      <span>Fiche technique</span>
-      <span class="fiche-icon">+</span>
-    </button>
-    <div class="fiche-content">
-      <div class="fiche-row">
-        <span class="fiche-key">Type</span>
-        <span class="fiche-value">Villa unifamiliale</span>
-      </div>
-      <div class="fiche-row">
-        <span class="fiche-key">Mission</span>
-        <span class="fiche-value">Nouvelle construction</span>
-      </div>
-      <div class="fiche-row">
-        <span class="fiche-key">Lieu</span>
-        <span class="fiche-value">Rhode-Saint-Genèse</span>
-      </div>
-      <div class="fiche-row">
-        <span class="fiche-key">Année</span>
-        <span class="fiche-value">2026</span>
-      </div>
-      <div class="fiche-row">
-        <span class="fiche-key">Surface</span>
-        <span class="fiche-value">— m²</span>
-      </div>
-      <div class="fiche-row">
-        <span class="fiche-key">Statut</span>
-        <span class="fiche-value">En cours</span>
-      </div>
+  <!-- Projet 2 — Villa à appartements RSG 2025 -->
+  <div class="project-entry reverse fade-in delay-1">
+    <div class="project-entry-img">
+      <img src="images/villa-appartements-2025.png"
+           alt="Villa à appartements Rhode-Saint-Genèse 2025 — Louis Reynaerts Architecture" />
+    </div>
+    <div class="project-entry-meta">
+      <span class="project-entry-type">Villa à appartements — Nouvelle construction</span>
+      <h2 class="project-entry-title">Rhode-Saint-Genèse</h2>
+      <p class="project-entry-location">Belgique, 2025</p>
+      <p class="project-entry-desc">
+        Résidence contemporaine haut de gamme alliant volumes généreux et finitions soignées,
+        dans un cadre arboré à Rhode-Saint-Genèse.
+      </p>
     </div>
   </div>
 
 </div>
-
-<div class="divider"></div>
 
 <!-- CONTACT -->
 <section class="section-contact" id="contact">
@@ -499,7 +442,7 @@
   <div class="contact-info">
     <div class="contact-group">
       <div class="contact-label">Adresse</div>
-      <div class="contact-value" style="color:var(--white);">Chaussée de Waterloo 792<br>1180 Uccle, Belgique</div>
+      <div class="contact-value">Chaussée de Waterloo 792<br>1180 Uccle, Belgique</div>
     </div>
     <div class="contact-divider"></div>
     <div class="contact-group">
@@ -509,7 +452,7 @@
     <div class="contact-divider"></div>
     <div class="contact-group">
       <div class="contact-label">Téléphone</div>
-      <div class="contact-value" style="color:var(--white);">+32 472 94 71 20</div>
+      <div class="contact-value">+32 472 94 71 20</div>
     </div>
   </div>
 </section>
