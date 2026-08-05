@@ -337,8 +337,6 @@
 
   .filter-btn.active {
     color: var(--black);
-    border-bottom: 1px solid var(--black);
-    padding-bottom: 1px;
   }
 
   .filter-sep {
@@ -430,9 +428,7 @@
 <!-- PROJECTS LIST -->
 <!-- FILTER -->
 <div class="filter-bar fade-in">
-  <button class="filter-btn active" onclick="filterProjects('all', this)">Tous les projets</button>
-  <span class="filter-sep">/</span>
-  <button class="filter-btn" onclick="filterProjects('construction', this)">Nouvelles constructions</button>
+  <button class="filter-btn active" onclick="filterProjects('construction', this)">Nouvelles constructions</button>
   <span class="filter-sep">/</span>
   <button class="filter-btn" onclick="filterProjects('renovation', this)">Rénovations & régularisations</button>
 </div>
@@ -551,19 +547,23 @@
 
 <script>
   function filterProjects(cat, btn) {
-    // Update active button
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-
-    // Show/hide entries
     document.querySelectorAll('.project-entry').forEach(entry => {
-      if (cat === 'all' || entry.dataset.cat === cat) {
+      if (entry.dataset.cat === cat) {
         entry.classList.remove('hidden');
       } else {
         entry.classList.add('hidden');
       }
     });
   }
+
+  // Show constructions by default on load
+  window.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.project-entry').forEach(entry => {
+      if (entry.dataset.cat !== 'construction') entry.classList.add('hidden');
+    });
+  });
 </script>
 
 </body>
