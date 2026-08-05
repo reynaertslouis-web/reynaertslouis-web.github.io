@@ -326,6 +326,17 @@
   .footer-link:hover { color: var(--white); }
   .footer-sep { color: #333; font-size: 0.6rem; }
 
+
+
+  @media (max-width: 768px) {
+    .cookie-banner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem;
+      gap: 1rem;
+    }
+  }
+
   /* ANIMATIONS */
   .fade-in {
     opacity: 0;
@@ -532,6 +543,8 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
+
+
 
 </body>
 </html>

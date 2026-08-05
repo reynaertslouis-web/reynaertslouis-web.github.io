@@ -298,6 +298,17 @@
   .footer-link:hover { color: var(--white); }
   .footer-sep { color: #333; font-size: 0.6rem; }
 
+
+
+  @media (max-width: 768px) {
+    .cookie-banner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem;
+      gap: 1rem;
+    }
+  }
+
   /* ANIMATIONS */
   .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.9s ease, transform 0.9s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -406,6 +417,25 @@
     </div>
   </a>
 
+  <!-- Projet 3 — Maison de maître Uccle 2025 -->
+  <a href="renovation-uccle-2025.html" class="project-entry fade-in delay-2" style="text-decoration:none;">
+    <div class="project-entry-img">
+      <img src="images/renovation-uccle-2025.jpg"
+           alt="Rénovation maison de maître Uccle 2025 — Louis Reynaerts Architecture" />
+    </div>
+    <div class="project-entry-meta">
+      <span class="project-entry-type">Maison de maître — Rénovation & extension</span>
+      <h2 class="project-entry-title">Uccle, Bruxelles</h2>
+      <p class="project-entry-location">Belgique, 2025</p>
+      <p class="project-entry-desc">
+        Rénovation lourde et extension arrière d'une maison de maître à Uccle.
+        Permis d'urbanisme obtenu en 2025. Dialogue entre patrimoine classique
+        et extension contemporaine en zinc.
+      </p>
+      <span class="project-entry-arrow">Voir le projet</span>
+    </div>
+  </a>
+
 </div>
 
 <!-- CONTACT -->
@@ -456,6 +486,8 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
+
+
 
 </body>
 </html>
