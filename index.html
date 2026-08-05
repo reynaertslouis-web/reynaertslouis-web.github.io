@@ -389,7 +389,7 @@
 
   .contact-heading {
     font-family: var(--serif);
-    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-size: clamp(2rem, 3vw, 3rem);
     font-weight: 400;
     line-height: 1;
   }
@@ -730,6 +730,10 @@
 
 
 
+
+  @media (max-width: 768px) {
+  }
+
   /* ANIMATIONS */
   .fade-in {
     opacity: 0;
@@ -793,6 +797,7 @@
     }
 
     .projects-grid { grid-template-columns: 1fr; gap: 4.5rem; background: var(--white); padding: 0 1.5rem; }
+    .all-projects-link { display: block; text-align: right; padding: 2rem 1.5rem 0; }
     .project-visual { aspect-ratio: 4/3 !important; }
 
     /* ABOUT mobile */
@@ -905,6 +910,8 @@
       </div>
     </div>
   </div>
+
+
 </section>
 
 
@@ -962,6 +969,8 @@
     <a href="https://www.instagram.com/louis.reynaerts.architecture/" target="_blank" class="footer-link">Instagram</a>
     <span class="footer-sep">—</span>
     <a href="https://wa.me/message/OGYVXKG6735FF1" target="_blank" class="footer-link">WhatsApp</a>
+    <span class="footer-sep">—</span>
+    <a href="mentions-legales.html" class="footer-link">Mentions légales</a>
   </div>
   <span>Bruxelles — Belgique</span>
 </footer>
