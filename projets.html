@@ -89,7 +89,7 @@
     display: flex;
     flex-direction: column;
     gap: 8rem;
-    padding-top: 8rem;
+    padding-top: 2rem;
     padding-bottom: 6rem;
   }
 
@@ -309,6 +309,55 @@
     }
   }
 
+
+
+
+  /* FILTER BAR */
+  .filter-bar {
+    padding: 5rem 4rem 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .filter-btn {
+    background: none;
+    border: none;
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray);
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.3s;
+  }
+
+  .filter-btn:hover { color: var(--black); }
+
+  .filter-btn.active {
+    color: var(--black);
+    border-bottom: 1px solid var(--black);
+    padding-bottom: 1px;
+  }
+
+  .filter-sep {
+    font-size: 0.65rem;
+    color: #ddd;
+  }
+
+  .project-entry.hidden {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .filter-bar {
+      padding: 120px 1.5rem 2rem;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+  }
+
   /* ANIMATIONS */
   .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.9s ease, transform 0.9s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -379,59 +428,69 @@
 
 
 <!-- PROJECTS LIST -->
+<!-- FILTER -->
+<div class="filter-bar fade-in">
+  <button class="filter-btn active" onclick="filterProjects('all', this)">Tous les projets</button>
+  <span class="filter-sep">/</span>
+  <button class="filter-btn" onclick="filterProjects('construction', this)">Nouvelles constructions</button>
+  <span class="filter-sep">/</span>
+  <button class="filter-btn" onclick="filterProjects('renovation', this)">Rénovations & régularisations</button>
+</div>
+
 <div class="projects-list">
 
   <!-- Projet 1 — Villa RSG 2026 -->
-  <a href="villa-2026.html" class="project-entry fade-in">
+  <a href="villa-2026.html" class="project-entry fade-in" data-cat="construction">
     <div class="project-entry-img">
-      <img src="images/villa-2026.png"
-           alt="Villa Rhode-Saint-Genèse 2026 — Louis Reynaerts Architecture" />
+      <img src="images/villa-2026.png" alt="Villa Rhode-Saint-Genèse 2026 — Louis Reynaerts Architecture" />
     </div>
     <div class="project-entry-meta">
       <span class="project-entry-type">Villa — Nouvelle construction</span>
       <h2 class="project-entry-title">Rhode-Saint-Genèse</h2>
       <p class="project-entry-location">Belgique, 2026</p>
-      <p class="project-entry-desc">
-        Villa contemporaine en brique claire, articulant volumes purs et matériaux nobles
-        dans un écrin de verdure. Architecture et intérieur conçus en cohérence totale.
-      </p>
+      <p class="project-entry-desc">Villa contemporaine en brique claire, articulant volumes purs et matériaux nobles dans un écrin de verdure. Architecture et intérieur conçus en cohérence totale.</p>
       <span class="project-entry-arrow">Voir le projet</span>
     </div>
   </a>
 
   <!-- Projet 2 — Villa à appartements RSG 2025 -->
-  <a href="villa-appartements-2025.html" class="project-entry reverse fade-in delay-1" style="text-decoration:none;">
+  <a href="villa-appartements-2025.html" class="project-entry reverse fade-in delay-1" data-cat="construction" style="text-decoration:none;">
     <div class="project-entry-img">
-      <img src="images/villa-appartements-2025.png"
-           alt="Villa à appartements Rhode-Saint-Genèse 2025 — Louis Reynaerts Architecture" />
+      <img src="images/villa-appartements-2025.png" alt="Villa à appartements Rhode-Saint-Genèse 2025 — Louis Reynaerts Architecture" />
     </div>
     <div class="project-entry-meta">
       <span class="project-entry-type">Villa à appartements — Nouvelle construction</span>
       <h2 class="project-entry-title">Rhode-Saint-Genèse</h2>
       <p class="project-entry-location">Belgique, 2025</p>
-      <p class="project-entry-desc">
-        Résidence contemporaine haut de gamme alliant volumes généreux et finitions soignées,
-        dans un cadre arboré à Rhode-Saint-Genèse.
-      </p>
+      <p class="project-entry-desc">Résidence contemporaine haut de gamme alliant volumes généreux et finitions soignées, dans un cadre arboré à Rhode-Saint-Genèse.</p>
       <span class="project-entry-arrow">Voir le projet</span>
     </div>
   </a>
 
   <!-- Projet 3 — Maison de maître Uccle 2025 -->
-  <a href="renovation-uccle-2025.html" class="project-entry fade-in delay-2" style="text-decoration:none;">
+  <a href="renovation-uccle-2025.html" class="project-entry fade-in delay-1" data-cat="renovation" style="text-decoration:none;">
     <div class="project-entry-img">
-      <img src="images/renovation-uccle-2025.jpg"
-           alt="Rénovation maison de maître Uccle 2025 — Louis Reynaerts Architecture" />
+      <img src="images/renovation-uccle-2025.jpg" alt="Rénovation maison de maître Uccle 2025 — Louis Reynaerts Architecture" />
     </div>
     <div class="project-entry-meta">
       <span class="project-entry-type">Maison de maître — Rénovation & extension</span>
       <h2 class="project-entry-title">Uccle, Bruxelles</h2>
       <p class="project-entry-location">Belgique, 2025</p>
-      <p class="project-entry-desc">
-        Rénovation lourde et extension arrière d'une maison de maître à Uccle.
-        Permis d'urbanisme obtenu en 2025. Dialogue entre patrimoine classique
-        et extension contemporaine en zinc.
-      </p>
+      <p class="project-entry-desc">Rénovation lourde et extension arrière d'une maison de maître à Uccle. Permis d'urbanisme obtenu en 2025. Dialogue entre patrimoine classique et extension contemporaine.</p>
+      <span class="project-entry-arrow">Voir le projet</span>
+    </div>
+  </a>
+
+  <!-- Projet 4 — Régularisation Uccle 2025 -->
+  <a href="regularisation-uccle-2025.html" class="project-entry reverse fade-in delay-2" data-cat="renovation" style="text-decoration:none;">
+    <div class="project-entry-img">
+      <img src="images/regularisation-uccle-2025.jpg" alt="Régularisation immeuble Uccle 2025 — Louis Reynaerts Architecture" />
+    </div>
+    <div class="project-entry-meta">
+      <span class="project-entry-type">Immeuble — Régularisation urbanistique</span>
+      <h2 class="project-entry-title">Uccle, Bruxelles</h2>
+      <p class="project-entry-location">Belgique, 2025</p>
+      <p class="project-entry-desc">Régularisation urbanistique d'un immeuble à Uccle. Permis obtenu en 2025 au terme d'une procédure menée en collaboration avec les autorités communales et régionales.</p>
       <span class="project-entry-arrow">Voir le projet</span>
     </div>
   </a>
@@ -488,6 +547,24 @@
 </script>
 
 
+
+
+<script>
+  function filterProjects(cat, btn) {
+    // Update active button
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Show/hide entries
+    document.querySelectorAll('.project-entry').forEach(entry => {
+      if (cat === 'all' || entry.dataset.cat === cat) {
+        entry.classList.remove('hidden');
+      } else {
+        entry.classList.add('hidden');
+      }
+    });
+  }
+</script>
 
 </body>
 </html>
