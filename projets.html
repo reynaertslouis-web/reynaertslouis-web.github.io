@@ -140,6 +140,43 @@
   .menu-item:hover .menu-item-count { gap: 1rem; }
   .menu-item-count::after { content: '→'; font-size: 0.8rem; }
 
+  /* ANIMATIONS */
+  .menu-item {
+    opacity: 0;
+    transform: translateY(-40px);
+    animation: slideDown 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  .menu-item:first-child { animation-delay: 0.05s; }
+  .menu-item:last-child { animation-delay: 0.2s; }
+
+  @keyframes slideDown {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .menu-item-number, .menu-item-title, .menu-item-count {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  .menu-item:first-child .menu-item-number { animation-delay: 0.5s; }
+  .menu-item:first-child .menu-item-title { animation-delay: 0.55s; }
+  .menu-item:first-child .menu-item-count { animation-delay: 0.65s; }
+
+  .menu-item:last-child .menu-item-number { animation-delay: 0.65s; }
+  .menu-item:last-child .menu-item-title { animation-delay: 0.7s; }
+  .menu-item:last-child .menu-item-count { animation-delay: 0.8s; }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .menu-item, .menu-item-number, .menu-item-title, .menu-item-count {
+      opacity: 1; transform: none; animation: none;
+    }
+  }
+
   @media (max-width: 768px) {
     nav {
       flex-direction: column;
