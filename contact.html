@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Contact — Louis Reynaerts Architecture. Discutons de votre projet.">
+<title>Contact | Louis Reynaerts Architecture</title>
+<link rel="icon" type="image/svg+xml" href="images/favicon-lr.svg">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #ffffff;
+    --gray: #c8c5be;
+    --light: #f0ede8;
+    --serif: 'EB Garamond', Georgia, serif;
+    --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  @font-face { font-family: 'EB Garamond'; font-style: normal; font-weight: 100 900; src: url('fonts/EBGaramond-Regular.ttf') format('truetype'); }
+  @font-face { font-family: 'EB Garamond'; font-style: italic; font-weight: 100 900; src: url('fonts/EBGaramond-Italic.ttf') format('truetype'); }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--sans);
+    font-weight: 300;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: var(--white);
+  }
+
+  .nav-logo { font-family: var(--serif); font-size: 1.2rem; font-weight: 500; letter-spacing: 0.02em; color: var(--black); text-decoration: none; }
+  .nav-links { display: flex; gap: 3rem; list-style: none; }
+  .nav-links a { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); text-decoration: none; transition: opacity 0.3s; }
+  .nav-links a:hover { opacity: 0.5; }
+
+  /* MAIN */
+  .contact-page {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+    min-height: calc(100vh - 80px);
+    padding: 4rem;
+  }
+
+
+  /* RIGHT — infos */
+  .contact-right {
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    max-width: 520px;
+    width: 100%;
+  }
+
+  .contact-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+    display: block;
+    margin-bottom: 3rem;
+  }
+
+  .contact-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 4rem;
+  }
+
+  .contact-title em { font-style: italic; color: var(--gray); }
+
+  .contact-group {
+    margin-bottom: 2rem;
+  }
+
+  .contact-group-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .contact-group-value {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--black);
+    line-height: 1.5;
+  }
+
+  .contact-group-value a {
+    color: var(--black);
+    text-decoration: none;
+    transition: opacity 0.3s;
+  }
+
+  .contact-group-value a:hover { opacity: 0.5; }
+
+  .contact-divider {
+    width: 40px;
+    height: 1px;
+    background: #e8e5e0;
+    margin: 2rem 0;
+  }
+
+  /* CTA */
+  .contact-cta {
+    display: inline-block;
+    margin-top: 3rem;
+    padding: 1rem 2.5rem;
+    background: var(--black);
+    color: var(--white);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity 0.3s;
+    align-self: flex-start;
+  }
+
+  .contact-cta:hover { opacity: 0.7; }
+
+  /* SOCIAL */
+  .contact-social {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .social-link {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .social-link:hover { color: var(--black); }
+
+  /* FOOTER minimal */
+  footer {
+    background: var(--white);
+    border-top: 1px solid #e8e5e0;
+    padding: 1.2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    color: var(--gray);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+  }
+
+  .footer-link { color: var(--gray); text-decoration: none; transition: color 0.3s; }
+  .footer-link:hover { color: var(--black); }
+
+  /* ANIMATIONS */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.9s ease, transform 0.9s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .delay-1 { transition-delay: 0.2s; }
+  .delay-2 { transition-delay: 0.4s; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { flex-direction: column; align-items: flex-start; padding: 1.2rem 1.5rem; gap: 0.5rem; }
+    .nav-logo { font-size: 1rem; line-height: 1.2; }
+    .nav-links { gap: 1.4rem; }
+    .nav-links a { font-size: 0.6rem; letter-spacing: 0.12em; }
+
+    .contact-page {
+      margin-top: 110px;
+      min-height: auto;
+      padding: 3rem 1.5rem;
+      align-items: flex-start;
+    }
+
+    .contact-right { width: 100%; }
+    .contact-title { font-size: 2rem; margin-bottom: 2.5rem; }
+
+    footer { padding: 1.2rem 1.5rem; flex-direction: column; gap: 0.4rem; }
+  }
+
+  @media (max-width: 480px) {
+    .nav-logo { font-size: 0.9rem; }
+    .nav-links a { font-size: 0.55rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Louis Reynaerts Architecture</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="contact-page">
+
+
+  <!-- DROITE : infos -->
+  <div class="contact-right">
+    <span class="contact-label fade-in">Contact</span>
+
+    <h1 class="contact-title fade-in delay-1">
+      Discutons de<br><em>votre projet.</em>
+    </h1>
+
+    <div class="fade-in delay-2">
+
+      <div class="contact-group">
+        <span class="contact-group-label">Email</span>
+        <div class="contact-group-value">
+          <a href="mailto:info@louisreynaerts.com">info@louisreynaerts.com</a>
+        </div>
+      </div>
+
+      <div class="contact-divider"></div>
+
+      <div class="contact-group">
+        <span class="contact-group-label">Téléphone</span>
+        <div class="contact-group-value">+32 472 94 71 20</div>
+      </div>
+
+      <div class="contact-divider"></div>
+
+      <div class="contact-group">
+        <span class="contact-group-label">Adresse</span>
+        <div class="contact-group-value">
+          Chaussée de Waterloo 792<br>
+          1180 Uccle, Belgique
+        </div>
+      </div>
+
+      <a href="https://calendly.com/louisreynaerts-info/30min" target="_blank" class="contact-cta">
+        Prendre rendez-vous
+      </a>
+
+      <div class="contact-social">
+        <a href="https://www.instagram.com/louis.reynaerts.architecture/" target="_blank" class="social-link">Instagram</a>
+        <a href="https://wa.me/message/OGYVXKG6735FF1" target="_blank" class="social-link">WhatsApp</a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>© 2026 Louis Reynaerts Architecture</span>
+  <a href="mentions-legales.html" class="footer-link">Mentions légales</a>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
