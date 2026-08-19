@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="fr-BE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2Y3ZjVmMiIvPgogIDx0ZXh0IHg9IjUwIiB5PSI1MyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9ImNlbnRyYWwiIGZvbnQtZmFtaWx5PSInTG9yYScsR2VvcmdpYSxzZXJpZiIgZm9udC13ZWlnaHQ9IjUwMCIgZm9udC1zaXplPSI1MiIgbGV0dGVyLXNwYWNpbmc9IjEuNSIgZmlsbD0iIzExMSI+TFI8L3RleHQ+Cjwvc3ZnPgo=">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAABr0lEQVR4nGP8/vUTAy0BE01NH7Vg1IJRCxgYGBgYWND4N27eTEpKffDwIQMDAwcHx87tW1VVVbDKcnJyCgsL/fnzV1dHOzY2xsXZCbsN379+wkSCgoKCgoLnz53GI3vpwrnvXz89uHfb19dHUFBwzuyZWBUzYi2LpGTkGRkZnzy6z8jISFD29u079o7OCvLyx44ewlSMMw6YmJiwmo4pKycny8DA8PrNG+wqcRlBPLh2/ToDA4OxsRFNLLh06XJxcZmIiHBTQz1WBeipiEjw9+9fW3vH589f/Pr1q7ioID4uVkBAAKtKMn3AzMx8+OD+vNzsP3/+PH78BJfpJFjw69cv/8BgNMHsrExDA4Nly1fs2LGTBAv+/PmDKfjw4aPTp8+gyTIzM3d3dbCwsFRUVr9//55YC+7du8/AwICcRv/+/Ttx0mRkWSaYrJaWZmZG+qvXrwsKi3///o1pGnpGu337TmBw6Lt375iYmAz09SGCjx4/evPmLQMDw8H9eyGyjIyMqqoq3Z0dpqYmv//8iYtPPHjwkJCQ0IF9e0REhPFZQHUw9IvrUQtGLRgCFgAAUdzjbK8721EAAAAASUVORK5CYII=">
+<link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAmElEQVR4nGP8/vUTAymAiSTVg13D2bPn5BWUT58+g8ydMnVafUNTe0cXQsf3r5/gSF5ODpP74tljPT1duCALHtv//vvX1z/x3LlzSxcvIuCHK1euMjAwMDMx5eZkvXv3/v3793AphA1nzpz9/uPHxo2b3r579/bt2x8/fnz/8ePChYsT+nuzcnL7e3t0dXUYGBgYR3ZMEwkA9JZlq0v/3DUAAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+<title>Louis Reynaerts Architecture — Architecte à Bruxelles</title>
+<meta name="description" content="Agence d'architecture à Bruxelles, Uccle, Waterloo et Rhode-Saint-Genèse : conception, rénovation et permis d'urbanisme pour villas et résidences d'exception.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://www.louisreynaerts.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Louis Reynaerts Architecture">
+<meta property="og:title" content="Louis Reynaerts Architecture — Architecte à Bruxelles">
+<meta property="og:description" content="Agence d'architecture à Bruxelles, Uccle, Waterloo et Rhode-Saint-Genèse : conception, rénovation et permis d'urbanisme pour villas et résidences d'exception.">
+<meta property="og:url" content="https://www.louisreynaerts.com/">
+<meta property="og:locale" content="fr_BE">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f7f5f2;
+  --ink:#111;
+  --mid:rgba(17,17,17,.38);
+  --serif:'Lora',Georgia,serif;
+  --sans:'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+@font-face{font-family:'EB Garamond';font-style:normal;font-weight:100 900;src:url('fonts/EBGaramond-Regular.ttf') format('truetype')}
+@font-face{font-family:'EB Garamond';font-style:italic;font-weight:100 900;src:url('fonts/EBGaramond-Italic.ttf') format('truetype')}
+
+html{background:var(--bg);color:var(--ink)}
+body{
+  font-family:var(--serif);
+  font-size:clamp(1.05rem,1.4vw,1.35rem);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ──────────────────────────────────────────
+   NAV — ultra-sobre : logo seul à gauche,
+   liens invisibles jusqu'au hover
+─────────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:1.6rem 2.2rem;
+  display:flex;justify-content:space-between;align-items:center;
+  background:var(--bg);
+  /* pas de border, pas d'ombre */
+}
+.logo{
+  font-family:Georgia,serif;
+  font-size:.95rem;
+  font-weight:500;
+  font-style:normal;
+  letter-spacing:.01em;
+  color:var(--ink);
+  text-decoration:none;
+}/* virgule atténuée comme lovefrom */
+.nav-items{
+  display:flex;gap:2rem;list-style:none;
+}
+.nav-items a{
+  font-family:var(--sans);
+  font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mid);text-decoration:none;
+  transition:color .2s;
+}
+.nav-items a:hover{color:var(--ink)}
+.hbg{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:0}
+.hbg span{display:block;width:20px;height:1px;background:var(--ink)}
+
+/* ──────────────────────────────────────────
+   HERO — texte seul, centré, pleine hauteur
+   exactement comme LoveFrom
+─────────────────────────────────────────── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:center;
+  padding:0 2.2rem;
+  padding-top:clamp(56px,9vh,80px);
+}
+.hero-inner{
+  max-width:820px;
+  /* LoveFrom : texte ancré à gauche, pas centré */
+}
+.hero-label{
+  font-family:var(--sans);
+  font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--mid);display:block;margin-bottom:2.5rem;
+}
+.hero-title{
+  font-family:'Lora',Georgia,serif;
+  font-size:clamp(3rem,7vw,7.5rem);
+  font-weight:400;
+  line-height:.95;
+  letter-spacing:-.03em;
+  color:var(--ink);
+}
+.hero-title em{
+  font-style:italic;
+  color:var(--mid);
+}
+/* la virgule signature */
+.hero-comma{color:var(--mid)}
+.hero-sub{
+  margin-top:3rem;
+  font-size:clamp(.95rem,1.3vw,1.2rem);
+  color:var(--mid);
+  max-width:480px;
+  line-height:1.7;
+  font-style:italic;
+}
+
+/* ──────────────────────────────────────────
+   SECTION TEXTE SEUL — phrase longue
+   paragraphes larges, beaucoup d'air
+─────────────────────────────────────────── */
+.section-text{
+  padding:clamp(5rem,12vw,14rem) 2.2rem;
+  max-width:960px;
+}
+.section-text p{
+  font-family:var(--serif);
+  font-size:clamp(1.6rem,3.5vw,3.8rem);
+  font-weight:400;
+  line-height:1.2;
+  letter-spacing:-.02em;
+  color:var(--ink);
+}
+.section-text p em{font-style:italic;color:var(--mid)}
+.section-text .note{
+  margin-top:3rem;
+  font-size:clamp(.9rem,1.2vw,1.05rem);
+  color:var(--mid);
+  font-style:italic;
+  max-width:480px;
+  line-height:1.75;
+}
+
+/* ──────────────────────────────────────────
+   IMAGE — bord à bord, toujours entière
+─────────────────────────────────────────── */
+.img-full{
+  position:relative;
+  overflow:hidden;
+  background:var(--bg);
+}
+.img-full img{
+  display:block;width:100%;height:auto;
+  animation:kb 22s ease-in-out infinite alternate;
+}
+@keyframes kb{0%{transform:scale(1)}100%{transform:scale(1.04) translate(-.3%,-.2%)}}
+
+.img-caption{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:.9rem 2.2rem;
+}
+.img-caption .c-left{
+  font-family:var(--sans);
+  font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--mid);
+}
+.img-caption .c-right a{
+  font-family:var(--sans);
+  font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--mid);text-decoration:none;
+  transition:color .2s;
+}
+.img-caption .c-right a:hover{color:var(--ink)}
+
+/* ──────────────────────────────────────────
+   VIDÉO — bord à bord
+─────────────────────────────────────────── */
+.vid-full{
+  position:relative;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  background:#111;
+}
+.vid-full video{
+  display:block;width:100%;height:100%;
+  object-fit:cover;
+  filter:brightness(.55) saturate(.5);
+}
+.vid-caption{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:.9rem 2.2rem;
+}
+.vid-caption span{
+  font-family:var(--sans);
+  font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--mid);
+}
+
+/* ──────────────────────────────────────────
+   PROJETS — liste typographique pure
+   (exactement comme LoveFrom liste ses membres)
+─────────────────────────────────────────── */
+.section-projects{
+  padding:clamp(4rem,10vw,12rem) 2.2rem;
+}
+.projects-eyebrow{
+  font-family:var(--sans);
+  font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--mid);display:block;margin-bottom:3rem;
+}
+.project-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  padding:1.4rem 0;
+  border-bottom:1px solid rgba(17,17,17,.08);
+  text-decoration:none;color:var(--ink);
+  transition:padding-left .35s cubic-bezier(.25,.46,.45,.94);
+  cursor:pointer;
+}
+.project-row:first-of-type{border-top:1px solid rgba(17,17,17,.08)}
+.project-row:hover{padding-left:.5rem}
+.project-row:hover .pr-arrow{opacity:1}
+.pr-name{
+  font-family:var(--serif);
+  font-size:clamp(1.6rem,3.5vw,3.8rem);
+  font-weight:400;
+  letter-spacing:-.02em;
+  line-height:1;
+}
+.pr-name em{font-style:italic;color:var(--mid)}
+.pr-meta{
+  text-align:right;
+  flex-shrink:0;
+  margin-left:2rem;
+}
+.pr-type{
+  font-family:var(--sans);
+  font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mid);display:block;margin-bottom:.2rem;
+}
+.pr-year{
+  font-family:var(--serif);
+  font-size:1rem;color:var(--mid);
+  font-style:italic;
+}
+.pr-arrow{
+  font-size:.9rem;color:var(--mid);
+  opacity:0;transition:opacity .25s;
+  margin-left:1.5rem;flex-shrink:0;
+}
+
+/* ──────────────────────────────────────────
+   CONTACT — sobre, typographique
+─────────────────────────────────────────── */
+.section-contact{
+  padding:clamp(5rem,12vw,14rem) 2.2rem;
+  border-top:1px solid rgba(17,17,17,.08);
+}
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6rem;align-items:start;
+}
+.contact-left h2{
+  font-family:var(--serif);
+  font-size:clamp(3rem,6vw,7rem);
+  font-weight:400;
+  line-height:.9;
+  letter-spacing:-.03em;
+  margin-bottom:3rem;
+}
+.contact-left h2 em{font-style:italic;color:var(--mid)}
+.btn{
+  font-family:var(--sans);
+  display:inline-block;
+  font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;
+  border-bottom:1px solid rgba(17,17,17,.3);
+  padding-bottom:3px;
+  transition:border-color .2s,color .2s;
+}
+.btn:hover{border-color:var(--ink)}
+.contact-right{padding-top:.5rem}
+.cdet{margin-bottom:2.2rem}
+.cdet-label{
+  font-family:var(--sans);
+  font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--mid);display:block;margin-bottom:.5rem;
+}
+.cdet-value{
+  font-family:var(--serif);
+  font-size:1.1rem;
+  color:var(--ink);line-height:1.65;
+}
+.csep{width:24px;height:1px;background:rgba(17,17,17,.1);margin:1.5rem 0}
+
+/* ──────────────────────────────────────────
+   FOOTER
+─────────────────────────────────────────── */
+footer{
+  padding:1.4rem 2.2rem;
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid rgba(17,17,17,.08);
+}
+.f-left{
+  font-family:var(--sans);
+  font-size:.5rem;letter-spacing:.12em;
+  color:var(--mid);
+}
+.f-links{display:flex;gap:2rem}
+.f-links a{
+  font-family:var(--sans);
+  font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--mid);text-decoration:none;transition:color .2s;
+}
+.f-links a:hover{color:var(--ink)}
+
+/* ──────────────────────────────────────────
+   REVEAL
+─────────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.15s}
+.reveal.d2{transition-delay:.3s}
+
+/* ──────────────────────────────────────────
+   MOBILE
+─────────────────────────────────────────── */
+@media(max-width:768px){
+  .nav-items,.nav-cta{display:none}
+  .hbg{display:flex}
+  .hero{padding:0 1.2rem;padding-top:64px}
+  .section-text{padding:5rem 1.2rem}
+  .section-projects{padding:4rem 1.2rem}
+  .section-contact{padding:5rem 1.2rem}
+  .contact-grid{grid-template-columns:1fr;gap:3.5rem}
+  .img-caption,.vid-caption{padding:.8rem 1.2rem}
+  footer{flex-direction:column;gap:1rem;text-align:center;padding:1.5rem 1.2rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ── SPLASH ── */
+#splash{
+  position:fixed;inset:0;z-index:999;
+  background:var(--bg);
+  pointer-events:none;
+  transition:opacity .25s ease-out;
+}
+
+/* zone centrale */
+#splash-center{
+  position:absolute;
+  left:2.2rem;right:2.2rem;
+  top:50%;transform:translateY(-50%);
+  height:60vh;
+}
+
+/* logo (animation d'ouverture) */
+#splash-logo{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  transition:opacity .9s ease;
+  z-index:2;
+}
+#splash-logo.hide{opacity:0}
+/* le H1 réel (texte statique, présent dès le chargement pour le
+   référencement et les lecteurs d'écran) ne doit rien changer à la mise
+   en page : la mise en forme visuelle reste entièrement sur .splash-name,
+   l'élément qui reçoit l'animation machine à écrire */
+.splash-name-h1{display:contents}
+.sr-only{
+  position:absolute!important;
+  width:1px;height:1px;
+  padding:0;margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+.splash-name{
+  font-family:Georgia,serif;
+  font-size:clamp(1.6rem,3.8vw,4.5rem);
+  font-weight:400;
+  font-style:normal;
+  letter-spacing:.01em;
+  color:var(--ink);
+  text-align:center;
+}
+/* phrase d'accroche — apparaît discrètement sous le nom une fois le
+   typewriter terminé, disparaît avec lui au lancement du diaporama */
+.splash-tagline{
+  font-family:Georgia,serif;
+  font-size:clamp(.8rem,1.4vw,1rem);
+  font-style:italic;
+  font-weight:400;
+  line-height:1.7;
+  color:var(--mid);
+  max-width:56ch;
+  margin:1.3rem auto 0;
+  text-align:center;
+  opacity:0;
+  transition:opacity 1.2s ease;
+}
+.splash-tagline.show{opacity:1}
+
+/* logo + menu qui apparaissent au lancement du diaporama — barre fixe,
+   indépendante du fondu du diaporama : reste affichée en permanence,
+   aussi bien devant le diaporama que devant les sections qui suivent */
+.splash-topbar{
+  position:fixed;top:0;left:0;right:0;
+  padding:1.6rem 2.2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(247,245,242,.82);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  opacity:0;pointer-events:none;transition:opacity 1s ease;
+  z-index:1000;
+}
+.splash-topbar.show{opacity:1}
+#splash-top-logo{
+  font-family:Georgia,serif;
+  font-size:clamp(1.2rem,2vw,1.6rem);
+  font-weight:500;
+  letter-spacing:.06em;
+  color:var(--ink);
+  line-height:1;
+}
+#splash-top-menu{
+  position:relative;
+  width:20px;height:20px;
+  background:none;border:none;cursor:pointer;padding:0;
+  pointer-events:auto;
+}
+#splash-top-menu span{
+  position:absolute;left:50%;top:50%;
+  background:var(--ink);
+  transform:translate(-50%,-50%);
+}
+#splash-top-menu span:first-child{width:20px;height:1px}
+#splash-top-menu span:last-child{width:1px;height:20px}
+
+/* icône "+" qui tourne sur elle-même pour devenir un "×" — utilisée à la
+   fois pour le bouton du menu et pour son double animé affiché au-dessus
+   de l'overlay plein écran (cf. openMenu/closeMenu) */
+.menu-cross{
+  position:relative;
+  width:20px;height:20px;
+  background:none;border:none;cursor:pointer;padding:0;
+  transform:rotate(0deg);
+  transition:transform .6s cubic-bezier(.65,0,.35,1);
+}
+.menu-cross span{
+  position:absolute;left:50%;top:50%;
+  background:var(--ink);
+  transform:translate(-50%,-50%);
+}
+.menu-cross span:first-child{width:20px;height:1px}
+.menu-cross span:last-child{width:1px;height:20px}
+.menu-cross.is-open{transform:rotate(225deg)}
+.splash-topbar-right{
+  display:flex;align-items:center;gap:1.4rem;
+}
+#splash-rdv{
+  display:inline-flex;align-items:baseline;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:clamp(.68rem,1.8vw,.85rem);
+  color:var(--ink);
+  text-decoration:none;
+  line-height:1;
+  pointer-events:auto;
+  transition:color .2s;
+}
+#splash-rdv:hover{color:var(--mid)}
+/* une fois la phrase finale tapée, le curseur clignotant s'efface et
+   laisse place à un soulignement — la ligne "devient" le trait sous le
+   texte, pour signaler que c'est un lien plutôt qu'une simple accroche */
+#rdv-text{
+  border-bottom:1px solid transparent;
+  padding-bottom:.2em;
+  transition:border-color .5s ease;
+}
+#rdv-text.linked{border-bottom-color:currentColor}
+#rdv-cursor{
+  display:inline-block;margin-left:2px;
+  animation:blink .75s step-end infinite;
+  font-style:normal;
+  opacity:1;
+  transition:opacity .35s ease;
+}
+#rdv-cursor.hidden{opacity:0;animation:none}
+
+/* indicateur de scroll — un petit intitulé "Notre Approche" au-dessus
+   d'une flèche minimaliste, centrés en bas, la flèche respire doucement.
+   Apparaît avec le reste de l'interface au lancement du diaporama.
+   Cliquable : déclenche le même fondu qu'un scroll manuel (voir JS) */
+#splash-scrolldown{
+  position:absolute;
+  left:50%;bottom:5.4rem;
+  transform:translateX(-50%);
+  opacity:0;transition:opacity 1s ease;
+  z-index:3;
+  pointer-events:none;
+  display:flex;flex-direction:column;align-items:center;gap:.6rem;
+  background:none;border:none;padding:0;margin:0;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+#splash-scrolldown.show{opacity:1;pointer-events:auto}
+/* espace de défilement réservé au fondu du diaporama — vide, même fond,
+   donne au scroll une distance suffisante pour un fondu lent et doux,
+   indépendamment de la hauteur des sections qui suivent */
+.splash-spacer{height:118vh;background:var(--bg)}
+@media (max-width:640px){.splash-spacer{height:100vh}}
+.splash-scroll-label{
+  font-family:var(--sans);
+  font-size:.65rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--mid);
+  transition:color .2s;
+}
+#splash-scrolldown:hover .splash-scroll-label{color:var(--ink)}
+.splash-scroll-arrow{
+  display:inline-block;
+  font-family:Georgia,serif;
+  font-size:1rem;
+  color:var(--mid);
+  animation:scroll-arrow-pulse 1.8s ease-in-out infinite;
+  transition:color .2s;
+}
+#splash-scrolldown:hover .splash-scroll-arrow{color:var(--ink)}
+@keyframes scroll-arrow-pulse{
+  0%,100%{transform:translateY(0);opacity:.6}
+  50%{transform:translateY(4px);opacity:1}
+}
+
+/* ── APPROCHE ── section centrée, dans l'esprit lovefrom : texte au
+   centre, beaucoup de respiration verticale, typographie seule.
+   même z-index que #splash (999, fixe en fond) : à valeur égale, l'ordre
+   du DOM tranche, et #approche vient après #splash dans le document —
+   donc même si le fondu du diaporama n'est pas encore tout à fait
+   terminé, cette section (fond opaque) le recouvre entièrement dès qu'elle
+   entre dans l'écran, sans jamais laisser transparaître le diaporama
+   derrière le texte. On reste sous les barres fixes (z-index:1000) pour
+   qu'elles restent visibles par-dessus */
+#approche{
+  position:relative;
+  z-index:999;
+  background:var(--bg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  min-height:100dvh;
+  padding:6rem 2rem;
+}
+.approche-inner{
+  max-width:700px;
+  width:100%;
+  text-align:center;
+  margin:auto;
+}
+.approche-title{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(1.9rem,4vw,3rem);
+  line-height:1.2;
+  color:var(--ink);
+  margin-bottom:4rem;
+  white-space:nowrap;
+}
+.approche-text p{
+  font-family:var(--serif);
+  font-size:clamp(1rem,1.3vw,1.1rem);
+  line-height:1.95;
+  color:var(--ink);
+  margin-bottom:2.4rem;
+}
+.approche-text p:last-child{margin-bottom:0}
+.approche-text a{
+  color:inherit;
+  text-decoration:none;
+  border-bottom:1px solid rgba(17,17,17,.35);
+  transition:border-color .2s,color .2s;
+}
+.approche-text a:hover{border-color:var(--ink);color:var(--mid)}
+.approche-signature{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(1.4rem,2.6vw,1.85rem);
+  color:var(--ink);
+  margin-top:4.5rem;
+}
+@media (max-width:640px){
+  #approche{padding:5rem 1.4rem}
+  .approche-title{margin-bottom:2.8rem;font-size:clamp(.95rem,5.8vw,1.9rem)}
+  .approche-text p{margin-bottom:1.8rem}
+  .approche-signature{margin-top:3rem}
+  #approche-scrolldown{margin-top:2.6rem}
+}
+
+/* indicateur de scroll placé après la signature, dans le flux normal du
+   bloc centré (et non en position absolue) : il garde ainsi toujours un
+   espacement constant avec la signature, quelle que soit la hauteur du
+   texte ou de l'écran, et se lit comme la suite naturelle de la page —
+   cliquer (ou continuer à scroller) mène à la section Contact, juste
+   après, sur cette même page */
+#approche-scrolldown{
+  display:inline-flex;flex-direction:column;align-items:center;gap:.6rem;
+  margin-top:3.5rem;
+  background:none;border:none;padding:0;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+#approche-scrolldown:hover .splash-scroll-label{color:var(--ink)}
+#approche-scrolldown:hover .splash-scroll-arrow{color:var(--ink)}
+
+/* ── CONTACT ── même traitement que #approche : bloc centré, même
+   z-index:999 pour la même raison (recouvrir #splash grâce à l'ordre du
+   DOM, sans jamais passer au-dessus des barres fixes à 1000). Seule la
+   dernière section de la page n'a pas besoin d'indicateur de scroll */
+#contact{
+  position:relative;
+  z-index:999;
+  background:var(--bg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  min-height:100dvh;
+  padding:6rem 2rem;
+}
+.contact-inner{
+  max-width:640px;
+  width:100%;
+  text-align:center;
+  margin:auto;
+}
+.contact-title{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(1.9rem,4vw,3rem);
+  line-height:1.2;
+  color:var(--ink);
+  margin-bottom:3.6rem;
+}
+.contact-details{
+  display:flex;flex-direction:column;align-items:center;gap:1.8rem;
+  margin-bottom:3.6rem;
+}
+.contact-field{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.field-label{
+  font-family:var(--sans);
+  font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mid);
+}
+.field-value{
+  font-family:var(--serif);
+  font-size:clamp(1rem,1.6vw,1.15rem);
+  color:var(--ink);
+  text-decoration:none;
+  transition:color .2s;
+}
+a.field-value:hover{color:var(--mid)}
+.contact-cta{
+  display:inline-block;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:clamp(1.1rem,2vw,1.35rem);
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:1px solid var(--ink);
+  padding-bottom:.25em;
+  transition:color .2s,border-color .2s;
+}
+.contact-cta:hover{color:var(--mid);border-color:var(--mid)}
+.page-footer{
+  margin-top:4.5rem;
+  font-family:var(--sans);
+  font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mid);
+}
+.page-footer a{color:var(--mid);text-decoration:underline;transition:color .2s}
+.page-footer a:hover{color:var(--ink)}
+@media (max-width:640px){
+  #contact{padding:5rem 1.4rem}
+  .contact-title{margin-bottom:2.8rem}
+  .contact-details{margin-bottom:2.8rem}
+  .page-footer{margin-top:3rem}
+}
+
+/* barre de contact en bas, symétrique de la topbar — apparaît en même
+   temps que le logo + menu, au lancement du diaporama. Barre fixe elle
+   aussi, toujours visible quelle que soit la section défilée */
+.splash-bottombar{
+  position:fixed;bottom:0;left:0;right:0;
+  padding:1.6rem 2.2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;row-gap:.5rem;
+  background:rgba(247,245,242,.82);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  opacity:0;transition:opacity 1s ease;
+  z-index:1000;
+  pointer-events:none;
+}
+.splash-bottombar.show{opacity:1}
+.splash-contact{
+  display:flex;align-items:center;gap:clamp(.7rem,3vw,1.5rem);
+  white-space:nowrap;
+}
+.splash-contact:last-child{margin-left:auto}
+.splash-contact a{
+  font-family:var(--sans);
+  font-size:clamp(.52rem,1.6vw,.6rem);
+  letter-spacing:clamp(.06em,.3vw,.14em);
+  text-transform:uppercase;
+  color:var(--ink);
+  text-decoration:none;
+  transition:color .2s;
+  pointer-events:auto;
+  display:inline-flex;align-items:center;gap:.5em;
+}
+.splash-contact a:hover{color:var(--ink)}
+/* point de statut "disponible" — pulsation façon indicateur de présence,
+   gris neutre pour rester dans la palette du site. Réservé au bouton
+   Prendre RDV : c'est le seul endroit où l'on veut attirer l'œil */
+.splash-status-dot{
+  display:inline-block;
+  width:6px;height:6px;
+  border-radius:50%;
+  border:1px solid #8a8a8a;
+  background:none;
+  position:relative;
+}
+.splash-status-dot::after{
+  content:'';
+  position:absolute;inset:-1px;
+  border-radius:50%;
+  border:1px solid #8a8a8a;
+  animation:status-pulse 2s ease-out infinite;
+}
+@keyframes status-pulse{
+  0%{transform:scale(1);opacity:.55}
+  100%{transform:scale(2.4);opacity:0}
+}
+/* icônes de contact statiques, sans pulsation — même traitement pour
+   WhatsApp, Instagram, téléphone et e-mail, pour rester sobre et uniforme */
+.splash-link-icon{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:11px;height:11px;
+  position:relative;
+  color:var(--ink);
+}
+.splash-link-icon svg{display:block;width:100%;height:100%}
+/* léger halo pulsant, réservé à l'icône WhatsApp — signale la
+   disponibilité, dans le même esprit que la pastille de Prendre RDV,
+   mais discret et sans remplacer l'icône elle-même. Légèrement plus
+   grand que l'icône elle-même (11px) pour toujours partir de l'extérieur
+   du dessin, plutôt que de naître à l'intérieur puis grandir à travers.
+   Amplitude propre (plus faible que celle de la pastille) pour s'arrêter
+   avant de toucher le mot "WhatsApp" juste à côté */
+.splash-link-icon.pulse::after{
+  content:'';
+  position:absolute;left:50%;top:50%;
+  width:13px;height:13px;
+  margin:-6.5px 0 0 -6.5px;
+  border-radius:50%;
+  border:1px solid #8a8a8a;
+  animation:link-icon-pulse 2s ease-out infinite;
+}
+@keyframes link-icon-pulse{
+  0%{transform:scale(1);opacity:.55}
+  100%{transform:scale(1.4);opacity:0}
+}
+
+/* diaporama — toujours visible en entier, marge blanche verticale fixe.
+   cliquable (renvoie vers la page du projet affiché) une fois affiché */
+#splash-slides{
+  position:absolute;
+  top:0;bottom:4.2rem;
+  left:clamp(.5rem,1.2vw,1rem);right:clamp(.5rem,1.2vw,1rem);
+  opacity:0;transition:opacity 1.1s ease;
+  overflow:hidden;
+  z-index:1;
+  pointer-events:none;
+}
+#splash-slides.show{opacity:1;cursor:pointer;pointer-events:auto}
+#splash-slides > img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:contain;object-position:center;
+  opacity:0;transition:opacity 1.4s ease;
+}
+#splash-slides > img.active{opacity:1}
+/* variante "triptyque" : plusieurs photos verticales d'un même projet,
+   présentées côte à côte au sein d'une seule diapositive, séparées par un
+   léger espace. Le groupe se comporte comme les autres diapositives
+   (même fondu, même cycle) — et son encombrement global (.slide-triptych-group)
+   est calculé en JS pour reproduire exactement le rectangle "contain" d'une
+   photo unique, afin que les 3 images ensemble occupent la même taille
+   qu'une seule des autres photos du diaporama */
+.slide-triptych{
+  position:absolute;inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;transition:opacity 1.4s ease;
+}
+.slide-triptych.active{opacity:1}
+.slide-triptych-group{
+  display:flex;
+  gap:clamp(.6rem,1.6vw,1.3rem);
+  width:100%;height:100%;
+  background:var(--bg);
+}
+.slide-triptych img{
+  position:static;
+  flex:1 1 0;
+  min-width:0;
+  width:auto;height:100%;
+  object-fit:cover;object-position:center;
+  opacity:1;
+}
+
+/* navigation manuelle du diaporama (← / →) — positionnée en JS (voir
+   alignCaptions) sous le coin bas-droit réel de la photo affichée, en
+   miroir de la légende (nom/lieu) calée sous le coin bas-gauche : même
+   ligne de base, même écart CAPTION_GAP, discret et hors de l'image donc
+   toujours lisible quelle que soit la photo affichée */
+#splash-nav{
+  position:absolute;
+  opacity:0;transition:opacity 1s ease;
+  z-index:2;
+  display:flex;
+  gap:1.1rem;
+  pointer-events:none;
+}
+#splash-nav.show{opacity:1;pointer-events:auto}
+#splash-nav button{
+  background:none;border:none;padding:0;
+  font-family:Georgia,serif;
+  font-size:clamp(.95rem,1.6vw,1.15rem);
+  line-height:1;
+  color:var(--mid);
+  cursor:pointer;
+  transition:color .2s;
+}
+#splash-nav button:hover{color:var(--ink)}
+
+/* légendes sous le diaporama — nom (gauche) + lieu (droite). Position (left/
+   right/bottom) calculée en JS pour coller exactement aux bords réels de
+   l'image et garder toujours le même écart avec elle (object-fit:contain
+   peut laisser des bandes blanches variables selon le format de fenêtre) */
+#splash-caption{
+  position:absolute;
+  opacity:0;transition:opacity 1s ease;
+  z-index:2;
+  cursor:pointer;
+  pointer-events:none;
+}
+#splash-caption.show{opacity:1;pointer-events:auto}
+#splash-cap-name{
+  font-family:Georgia,serif;
+  font-size:clamp(.85rem,1.4vw,1.05rem);
+  font-weight:400;
+  font-style:normal;
+  letter-spacing:.005em;
+  color:var(--ink);
+  line-height:1.3;
+  border-bottom:1px solid transparent;
+  transition:border-color .2s;
+}
+#splash-caption:hover #splash-cap-name{border-color:var(--ink)}
+#splash-cap-meta{
+  font-family:Georgia,serif;
+  font-size:clamp(.7rem,1.1vw,.85rem);
+  font-weight:400;
+  font-style:italic;
+  color:var(--mid);
+  line-height:1.3;
+  margin-top:.15rem;
+}
+/* intitulé au-dessus du diaporama — même bord gauche que la légende de
+   projet en bas (calculé en JS dans alignCaptions), pour un effet de
+   cadrage vertical de part et d'autre de la photo */
+#splash-kicker{
+  position:absolute;
+  transform:translateY(-100%);
+  opacity:0;transition:opacity 1s ease;
+  z-index:2;
+  font-family:var(--sans);
+  font-size:.65rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--mid);
+}
+#splash-kicker.show{opacity:1}
+
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ── FONT TESTER ── */
+#font-tester{
+  position:fixed;bottom:2rem;right:2rem;z-index:1000;
+  display:flex;flex-direction:column;gap:.5rem;align-items:flex-end;
+}
+.ft-btn{
+  background:none;border:none;cursor:pointer;
+  font-size:.9rem;padding:.35rem .8rem;
+  color:rgba(17,17,17,.35);
+  border-bottom:1px solid transparent;
+  transition:color .2s, border-color .2s;
+  text-align:right;
+}
+.ft-btn:hover,.ft-btn.active{color:var(--ink);border-color:rgba(17,17,17,.25)}
+.ft-btn.active{color:var(--ink)}
+.ft-label{
+  font-family:var(--sans);font-size:.42rem;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(17,17,17,.28);
+  text-align:right;margin-bottom:.3rem;
+}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Architect",
+  "name": "Louis Reynaerts Architecture",
+  "image": "https://www.louisreynaerts.com/favicon-512.png",
+  "url": "https://www.louisreynaerts.com/",
+  "telephone": "+32472947120",
+  "email": "info@louisreynaerts.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Chaussée de Waterloo 792",
+    "postalCode": "1180",
+    "addressLocality": "Uccle",
+    "addressCountry": "BE"
+  },
+  "areaServed": [
+    "Bruxelles",
+    "Uccle",
+    "Ixelles",
+    "Waterloo",
+    "Rhode-Saint-Genèse",
+    "Brabant wallon",
+    "Brabant flamand"
+  ],
+  "sameAs": [
+    "https://www.instagram.com/louis.reynaerts.architecture/"
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Louis Reynaerts"
+  }
+}
+</script>
+</head>
+<body>
+
+<a id="projets" aria-hidden="true"></a>
+<!-- SPLASH -->
+<div id="splash">
+
+  <div id="splash-center">
+    <div id="splash-logo">
+      <h1 class="splash-name-h1">
+        <span class="sr-only">Louis Reynaerts Architecture</span>
+        <span class="splash-name" id="splashName" aria-hidden="true"></span>
+      </h1>
+      <div class="splash-tagline" id="splashTagline">Tout commence par une page blanche.<br>Nous vous accompagnons jusqu'au dernier trait, en Belgique et au&#8209;delà.</div>
+    </div>
+    <div id="splash-slides">
+      <img id="slide-1" src="images/villa-eques-facade-rhode-saint-genese.jpg" alt="Villa Éques, villa unifamiliale neuve à Rhode-Saint-Genèse — Louis Reynaerts Architecture">
+      <img id="slide-0" src="images/residence-aurore-facade-rhode-saint-genese.jpg" alt="Résidence Aurore, villa à appartements neuve à Rhode-Saint-Genèse — Louis Reynaerts Architecture">
+    <div id="slide-waterloo" class="slide-triptych">
+      <div class="slide-triptych-group">
+      <img src="images/villa-julia-renovation-salle-de-bain-waterloo.jpg" alt="Rénovation Villa Julia — salle de bain, Waterloo, Louis Reynaerts Architecture">
+      <img src="images/villa-julia-renovation-couloir-waterloo.jpg" alt="Rénovation Villa Julia — couloir, Waterloo, Louis Reynaerts Architecture">
+      <img src="images/villa-julia-renovation-cuisine-waterloo.jpg" alt="Rénovation Villa Julia — cuisine, Waterloo, Louis Reynaerts Architecture">
+    </div>
+    </div>
+    </div>
+    <p id="splash-kicker">Nos dernières réalisations</p>
+    <div id="splash-caption">
+      <div id="splash-cap-name"></div>
+      <div id="splash-cap-meta"></div>
+    </div>
+    <div id="splash-nav">
+      <button type="button" id="splash-prev" aria-label="Projet précédent">←</button>
+      <button type="button" id="splash-next" aria-label="Projet suivant">→</button>
+    </div>
+  </div>
+
+  <button type="button" id="splash-scrolldown" aria-label="Découvrir notre approche">
+    <span class="splash-scroll-label">Notre Approche</span>
+    <span class="splash-scroll-arrow">↓</span>
+  </button>
+
+</div>
+
+<!-- barre du haut (logo, prise de RDV, menu) et barre du bas (liens de
+     contact) : en dehors de #splash, en position fixe, pour rester
+     affichées en permanence — y compris au-dessus des sections suivantes
+     — indépendamment du fondu du diaporama au scroll -->
+<div class="splash-topbar" id="splash-topbar">
+  <div id="splash-top-logo">LR</div>
+  <div class="splash-topbar-right">
+    <a id="splash-rdv" href="https://calendly.com/louisreynaerts-info/30min?month=2026-08" target="_blank" rel="noopener">
+      <span id="rdv-text"></span><span id="rdv-cursor">|</span>
+    </a>
+    <button id="splash-top-menu" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</div>
+
+<div class="splash-bottombar" id="splash-bottombar">
+  <div class="splash-contact">
+    <a href="https://wa.me/32472947120" target="_blank" rel="noopener"><span class="splash-link-icon" id="wa-link-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5a6.3 6.3 0 0 0-5.5 9.4L1.7 14l3.2-.9A6.3 6.3 0 1 0 8 1.5z"/><path d="M5.6 5.6c.15-.3.3-.3.45-.3h.3c.1 0 .25.02.35.28.13.32.42 1.05.46 1.13.05.1.08.2 0 .33-.07.13-.1.18-.2.28-.1.1-.18.17-.08.33.42.68 1 1.2 1.7 1.5.13.06.24.05.32-.06.1-.12.4-.47.5-.63.1-.16.2-.13.35-.08.15.06.94.45 1.1.53.16.08.26.12.3.2.04.08.04.44-.1.87-.15.43-.85.78-1.16.8-.32.03-.68.04-1.12-.08-.26-.08-.6-.19-1.03-.37-1.77-.76-2.93-2.52-3.03-2.65-.08-.13-.72-.96-.72-1.85s.47-1.31.63-1.49z"/></svg></span>WhatsApp</a>
+    <a href="https://www.instagram.com/louis.reynaerts.architecture/" target="_blank" rel="noopener"><span class="splash-link-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1.6" y="1.6" width="12.8" height="12.8" rx="3.6"/><circle cx="8" cy="8" r="3.1"/><circle cx="11.5" cy="4.4" r=".55" fill="currentColor" stroke="none"/></svg></span>Instagram</a>
+  </div>
+  <div class="splash-contact">
+    <a href="tel:+32472947120"><span class="splash-link-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 2h2.2l1 2.6L5.3 6c.7 1.8 2 3.1 3.8 3.8l1.4-1.4 2.6 1v2.2c0 .8-.7 1.5-1.5 1.4C6.9 12.6 3.4 9.1 2.9 4.3 2.8 3.5 2.4 2.8 3.5 2z"/></svg></span>+32 472 94 71 20</a>
+    <a href="mailto:info@louisreynaerts.com"><span class="splash-link-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="3" width="13" height="10" rx="1.4"/><path d="M2 4.2l6 5 6-5"/></svg></span>info@louisreynaerts.com</a>
+  </div>
+</div>
+
+<!-- espace de défilement dédié à la disparition du diaporama : garantit
+     une distance de scroll suffisante pour un fondu lent et régulier,
+     quelle que soit la hauteur du contenu qui suit -->
+<div class="splash-spacer" aria-hidden="true"></div>
+
+<!-- APPROCHE -->
+<section id="approche">
+  <div class="approche-inner">
+    <h2 class="approche-title">Une approche sur-mesure</h2>
+    <div class="approche-text">
+      <p>Louis Reynaerts Architecture est une agence d'architecture contemporaine, active en Belgique comme à l'international. Elle associe architecture et design d'intérieur dans une approche globale et sur mesure, spécialisée dans la conception et la rénovation de villas, maisons, appartements et résidences d'exception. Implantée à Bruxelles, à Uccle, à la lisière d'Ixelles, ainsi qu'à Waterloo, dans le Brabant wallon, l'agence intervient dans toute la Belgique et s'ouvre également à des projets à l'étranger.</p>
+      <p>Les missions proposées couvrent <a href="conception-architecturale.html">la conception architecturale</a>, <a href="suivi-execution.html">le suivi de l'exécution</a>, l'introduction des demandes de <a href="permis-urbanisme.html">permis d'urbanisme</a> et de <a href="regularisation.html">régularisation</a>, ainsi que <a href="conception-interieurs.html">la conception d'intérieurs</a>, avec une attention particulière portée aux ambiances, aux matériaux et aux détails.</p>
+      <p>Diplômé en architecture de l'Université libre de Bruxelles, Louis Reynaerts a intégré durant plusieurs années des bureaux renommés, tels que Counson Architecture à Genève, en Suisse, et Olivier Dwek à Bruxelles et à Paris. Fort de ces expériences, il fonde son propre bureau, animé par une vision holistique du projet, où architecture et conception d'intérieurs d'exception se répondent pour créer des lieux de vie uniques et intemporels, profondément ancrés dans leur environnement.</p>
+    </div>
+    <p class="approche-signature">Louis Reynaerts Architecture</p>
+    <button type="button" id="approche-scrolldown" aria-label="Aller à la section Contact">
+      <span class="splash-scroll-label">Nous contacter</span>
+      <span class="splash-scroll-arrow">↓</span>
+    </button>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <h2 class="contact-title">Discutons de votre projet.</h2>
+    <div class="contact-details">
+      <div class="contact-field">
+        <span class="field-label">Email</span>
+        <a class="field-value" href="mailto:info@louisreynaerts.com">info@louisreynaerts.com</a>
+      </div>
+      <div class="contact-field">
+        <span class="field-label">Téléphone</span>
+        <a class="field-value" href="tel:+32472947120">+32 472 94 71 20</a>
+      </div>
+      <div class="contact-field">
+        <span class="field-label">Adresse</span>
+        <span class="field-value">Chaussée de Waterloo 792, 1180 Uccle, Belgique</span>
+      </div>
+    </div>
+    <a class="contact-cta" href="https://calendly.com/louisreynaerts-info/30min?month=2026-08" target="_blank" rel="noopener">Prendre rendez-vous</a>
+    <p class="page-footer">© 2026 Louis Reynaerts Architecture · <a href="mentions-legales.html">Mentions légales</a></p>
+  </div>
+</section>
+
+<script>
+// Menu plein écran, ouvert depuis l'écran d'ouverture (nav du site à reconstruire plus tard).
+// L'icône "+" du hamburger tourne sur elle-même pour devenir un "×" : comme
+// l'overlay (z-index:1001) recouvre le vrai bouton du topbar (z-index:1000),
+// on affiche un double animé (.menu-cross) exactement à la même position —
+// il démarre en "+" et tourne vers "×" à l'ouverture, et repart en sens
+// inverse à la fermeture, avant que l'overlay ne disparaisse.
+var menuToggleBtn = document.getElementById('splash-top-menu');
+var menuOverlay = null;
+
+function closeMenu(){
+  if(!menuOverlay) return;
+  var overlay = menuOverlay;
+  var cross = overlay.querySelector('.menu-cross');
+  if(cross) cross.classList.remove('is-open');
+  overlay.style.opacity = '0';
+  setTimeout(function(){ overlay.remove(); }, 380);
+  menuOverlay = null;
+}
+
+function openMenu(){
+  // centre le double animé exactement sur la position réelle du hamburger,
+  // quelle que soit la taille d'écran, plutôt qu'un coin générique
+  var hbgRect = menuToggleBtn.getBoundingClientRect();
+  var cx = hbgRect.left + hbgRect.width / 2 - 10;
+  var cy = hbgRect.top + hbgRect.height / 2 - 10;
+  var m=document.createElement('div');
+  m.style.cssText='position:fixed;inset:0;background:#f7f5f2;z-index:1001;display:flex;flex-direction:column;justify-content:center;padding:2.5rem;gap:2rem;opacity:0;transition:opacity .35s ease';
+  var linkStyle='font-family:Georgia,serif;font-size:3rem;color:#111;text-decoration:none;letter-spacing:-.02em;background:none;border:none;padding:0;margin:0;text-align:left;cursor:pointer;display:block';
+  m.innerHTML=`
+    <button type="button" class="menu-link" data-action="projets" style="${linkStyle}">Projets,</button>
+    <button type="button" class="menu-link" data-action="approche" style="${linkStyle}">Approche,</button>
+    <button type="button" class="menu-link" data-action="contact" style="${linkStyle}">Contact,</button>
+    <button class="menu-cross" aria-label="Fermer le menu" style="position:fixed;left:${cx}px;top:${cy}px"><span></span><span></span></button>
+  `;
+  document.body.appendChild(m);
+  menuOverlay = m;
+  var cross = m.querySelector('.menu-cross');
+  cross.addEventListener('click', closeMenu);
+
+  // "Projets", "Approche" et "Contact" restent sur cette même page (le
+  // diaporama, l'approche et le contact font tous partie de la page
+  // unique) : on ferme juste le menu et on scrolle, sans navigation, pour
+  // ne jamais rejouer l'animation machine à écrire du logo (qui ne se
+  // joue qu'une fois, au chargement).
+  var projetsBtn = m.querySelector('[data-action="projets"]');
+  if(projetsBtn){
+    projetsBtn.addEventListener('click', function(){
+      closeMenu();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  }
+  var approcheBtn = m.querySelector('[data-action="approche"]');
+  if(approcheBtn){
+    approcheBtn.addEventListener('click', function(){
+      closeMenu();
+      var target = window.scrollThreshold ? window.scrollThreshold() : 0;
+      window.scrollTo({top: target, behavior: 'smooth'});
+    });
+  }
+  var contactBtn = m.querySelector('[data-action="contact"]');
+  if(contactBtn){
+    contactBtn.addEventListener('click', function(){
+      closeMenu();
+      var contactSection = document.getElementById('contact');
+      if(contactSection) contactSection.scrollIntoView({behavior: 'smooth', block: 'start'});
+    });
+  }
+  // laisse le premier rendu (état "+" / opacité 0) s'appliquer avant de
+  // déclencher la transition, sinon le navigateur saute directement à
+  // l'état final sans animer
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      m.style.opacity = '1';
+      cross.classList.add('is-open');
+    });
+  });
+}
+
+menuToggleBtn.addEventListener('click', function(){
+  if(menuOverlay){ closeMenu(); } else { openMenu(); }
+});
+
+// ── SPLASH ──
+(function(){
+  var slidesData = [
+    {id:'slide-0', name:'Résidence Aurore', type:'Nouvelle construction', meta:'Rhode-Saint-Genèse, 2025', href:'residence-aurore.html'},
+    {id:'slide-1', name:'Villa Éques', type:'Nouvelle construction', meta:'Rhode-Saint-Genèse, 2026', href:'villa-eques.html'},
+    {id:'slide-waterloo', name:'Villa Julia', type:'Rénovation', meta:'Waterloo, 2025', href:'renovation-villa-julia.html'}
+  ];
+  var current = 0, interval;
+  var capWrap = document.getElementById('splash-caption');
+  var capName = document.getElementById('splash-cap-name');
+  var capMeta = document.getElementById('splash-cap-meta');
+  var slidesWrap = document.getElementById('splash-slides');
+  var centerWrap = document.getElementById('splash-center');
+
+  // typewriter du logo
+  var text = 'Louis Reynaerts Architecture';
+  var container = document.getElementById('splashName');
+  var i = 0;
+  var cursor = document.createElement('span');
+  cursor.textContent = '|';
+  cursor.style.cssText = 'display:inline-block;margin-left:2px;animation:blink .75s step-end infinite;font-style:normal';
+  container.appendChild(cursor);
+
+  // positionne le bloc de légende (nom + lieu/date en italique) exactement
+  // sous le coin bas-gauche réel de la photo affichée, quel que soit le
+  // format de la fenêtre — object-fit:contain peut laisser des bandes
+  // blanches (horizontales ET verticales) qui varient selon le cas
+  var CAPTION_GAP = 24; // px, écart constant entre la photo et la légende
+
+  // reproduit le calcul d'object-fit:contain : renvoie le rectangle
+  // (largeur/hauteur) qu'occuperait une photo de ratio naturalW/naturalH
+  // une fois "containée" dans le cadre du diaporama
+  function containRect(naturalW, naturalH){
+    var wrapRect = slidesWrap.getBoundingClientRect();
+    var scale = Math.min(wrapRect.width / naturalW, wrapRect.height / naturalH);
+    return {w: naturalW * scale, h: naturalH * scale};
+  }
+
+  // dimensionne le groupe de 3 photos (.slide-triptych-group) pour qu'il
+  // occupe exactement le même encombrement qu'une photo unique du
+  // diaporama (référence : slide-0), plutôt que de remplir tout le cadre
+  function sizeTriptych(){
+    var group = document.querySelector('#slide-waterloo .slide-triptych-group');
+    var ref = document.getElementById('slide-0');
+    if(!group || !ref || !ref.naturalWidth) return;
+    var r = containRect(ref.naturalWidth, ref.naturalHeight);
+    group.style.width = r.w + 'px';
+    group.style.height = r.h + 'px';
+  }
+
+  function alignCaptions(el){
+    if(!el) return;
+    var wrapRect = slidesWrap.getBoundingClientRect();
+    var centerRect = centerWrap.getBoundingClientRect();
+    var renderedW, renderedH, offX, offY;
+    if(el.naturalWidth){
+      // photo unique en object-fit:contain — bandes blanches possibles
+      // selon le format, on calcule le rectangle réellement affiché
+      var scale = Math.min(wrapRect.width / el.naturalWidth, wrapRect.height / el.naturalHeight);
+      renderedW = el.naturalWidth * scale;
+      renderedH = el.naturalHeight * scale;
+      offX = (wrapRect.width - renderedW) / 2;
+      offY = (wrapRect.height - renderedH) / 2;
+    } else {
+      // diapositive "triptyque" (groupe de photos) : on utilise le
+      // rectangle réel du groupe (.slide-triptych-group), dimensionné en
+      // JS par sizeTriptych() pour correspondre au format d'une photo seule
+      var group = el.querySelector('.slide-triptych-group') || el;
+      var groupRect = group.getBoundingClientRect();
+      renderedW = groupRect.width;
+      renderedH = groupRect.height;
+      offX = groupRect.left - wrapRect.left;
+      offY = groupRect.top - wrapRect.top;
+    }
+    var left = (wrapRect.left - centerRect.left) + offX;
+    var top = (wrapRect.top - centerRect.top) + offY + renderedH + CAPTION_GAP;
+    capWrap.style.left = left + 'px';
+    capWrap.style.top = top + 'px';
+
+    // intitulé "Nos dernières réalisations" — même bord gauche que la
+    // légende, juste au-dessus de la photo (écart symétrique à CAPTION_GAP)
+    var kicker = document.getElementById('splash-kicker');
+    if(kicker){
+      kicker.style.left = left + 'px';
+      kicker.style.top = ((wrapRect.top - centerRect.top) + offY - CAPTION_GAP) + 'px';
+    }
+
+    // navigation manuelle (← / →) — même ligne de base que la légende,
+    // mais calée sur le coin bas-DROIT réel de la photo (miroir symétrique)
+    var navEl = document.getElementById('splash-nav');
+    if(navEl){
+      var right = (wrapRect.left - centerRect.left) + offX + renderedW;
+      navEl.style.right = (centerRect.width - right) + 'px';
+      navEl.style.top = top + 'px';
+    }
+  }
+
+  function showCaption(slide){
+    capName.textContent = slide.name;
+    capMeta.textContent = slide.type + ' · ' + slide.meta;
+    alignCaptions(document.getElementById(slide.id));
+    capWrap.classList.add('show');
+    var navEl = document.getElementById('splash-nav');
+    if(navEl) navEl.classList.add('show');
+  }
+
+  // ouvre la page du projet actuellement affiché — utilisée à la fois par
+  // la légende et par un clic sur la photo elle-même
+  function goToCurrentProject(){
+    var href = slidesData[current] && slidesData[current].href;
+    if(href) window.location.href = href;
+  }
+
+  // la légende (nom + lieu/date) renvoie vers la page du projet affiché —
+  // toujours celui actuellement visible, grâce à la fermeture sur "current"
+  capWrap.addEventListener('click', goToCurrentProject);
+
+  // la photo elle-même renvoie aussi vers la page du projet affiché
+  var slidesEl = document.getElementById('splash-slides');
+  if(slidesEl) slidesEl.addEventListener('click', goToCurrentProject);
+
+  // navigation manuelle (← précédent / → suivant) : #splash-nav est en
+  // dehors de #splash-slides, un clic ici ne remonte donc pas jusqu'à son
+  // écouteur de clic (goToCurrentProject) — et on relance le minuteur à
+  // chaque fois pour ne pas enchaîner un second changement automatique trop tôt
+  var prevBtn = document.getElementById('splash-prev');
+  if(prevBtn){
+    prevBtn.addEventListener('click', function(){
+      advanceSlide(-1);
+      startAutoplay();
+    });
+  }
+  var nextBtn = document.getElementById('splash-next');
+  if(nextBtn){
+    nextBtn.addEventListener('click', function(){
+      advanceSlide(1);
+      startAutoplay();
+    });
+  }
+
+  window.addEventListener('resize', function(){
+    sizeTriptych();
+    if(slidesData[current]) alignCaptions(document.getElementById(slidesData[current].id));
+  });
+
+  function launchSlideshow(skipRdvTypewriter){
+    document.getElementById('splash-logo').classList.add('hide');
+    document.getElementById('splash-topbar').classList.add('show');
+    document.getElementById('splash-bottombar').classList.add('show');
+    document.getElementById('splash-scrolldown').classList.add('show');
+    document.getElementById('splash-kicker').classList.add('show');
+    if(skipRdvTypewriter){
+      // arrivée directe sur #approche : le lien de RDV est affiché dans
+      // son état final, sans rejouer l'effet machine à écrire
+      var rdvEl = document.getElementById('rdv-text');
+      var cursorEl = document.getElementById('rdv-cursor');
+      if(rdvEl){ rdvEl.textContent = 'Prendre rendez-vous'; rdvEl.classList.add('linked'); }
+      if(cursorEl) cursorEl.classList.add('hidden');
+      var wa = document.getElementById('wa-link-icon');
+      if(wa) wa.classList.add('pulse');
+    } else {
+      typeRdvText();
+    }
+
+    sizeTriptych();
+    document.getElementById('splash-slides').classList.add('show');
+    document.getElementById(slidesData[0].id).classList.add('active');
+    showCaption(slidesData[0]);
+
+    startAutoplay();
+  }
+
+  // avance (ou recule, delta:-1) d'une diapositive — utilisée aussi bien
+  // par le cycle automatique que par les boutons ← / → cliqués manuellement
+  function advanceSlide(delta){
+    delta = delta || 1;
+    var prev = current;
+    current = (current + delta + slidesData.length) % slidesData.length;
+    document.getElementById(slidesData[prev].id).classList.remove('active');
+    document.getElementById(slidesData[current].id).classList.add('active');
+    showCaption(slidesData[current]);
+  }
+
+  // (re)démarre le cycle de 10s — appelée au lancement, et à nouveau après
+  // un clic manuel sur ← / → pour ne pas enchaîner un second changement
+  // trop rapproché
+  function startAutoplay(){
+    clearInterval(interval);
+    interval = setInterval(function(){ advanceSlide(1); }, 10000);
+  }
+
+  // scroll → fait disparaître l'écran d'ouverture, révèle le site.
+  // Le fondu est piloté en continu par la position de scroll (et non plus
+  // verrouillé une fois disparu) : on peut donc remonter pour le faire
+  // réapparaître et retrouver le diaporama. La barre du haut/bas reste
+  // affichée en permanence puisqu'elle est désormais en dehors de #splash.
+
+  // distance de scroll nécessaire pour que le fondu de l'écran d'ouverture
+  // aille jusqu'au bout — partagée entre le scroll manuel et le clic sur
+  // la flèche/le texte "Notre Approche", pour un comportement identique.
+  // Le seuil est calé sur le sommet de #approche : #approche fait
+  // exactement 100vh et centre son contenu, donc le fondu se termine
+  // pile au moment où la section arrive alignée (et donc centrée) en
+  // haut de l'écran, que ce soit au trackpad ou via le clic.
+  function scrollThreshold(){
+    var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    var approche = document.getElementById('approche');
+    var approcheTop = approche
+      ? approche.getBoundingClientRect().top + (window.scrollY || window.pageYOffset)
+      : window.innerHeight * 1.15;
+    return Math.max(1, Math.min(approcheTop, maxScroll));
+  }
+  // exposée pour être réutilisée par le menu plein écran (lien "Approche")
+  window.scrollThreshold = scrollThreshold;
+
+  function syncSplashOpacity(){
+    var el = document.getElementById('splash');
+    if(!el) return;
+    // le fondu doit toujours pouvoir aller jusqu'au bout, même si la page
+    // n'offre pas tout à fait une hauteur de défilement suffisante — et
+    // une distance de scroll plus longue = une transition plus lente/douce
+    var progress = Math.min((window.scrollY||window.pageYOffset) / scrollThreshold(), 1);
+    el.style.opacity = 1 - progress;
+  }
+  window.addEventListener('scroll', syncSplashOpacity, {passive:true});
+  // appel initial : si la page arrive déjà défilée (ex. lien "#approche"
+  // depuis une autre page), le fondu doit être correct dès le premier
+  // rendu, sans attendre un premier événement de scroll manuel
+  syncSplashOpacity();
+
+  // clic sur la flèche / "Notre Approche" → même effet qu'un scroll manuel
+  // jusqu'au bout du fondu (le listener ci-dessus anime l'opacité pendant
+  // le scroll, qu'il soit déclenché à la souris/au trackpad ou ici) : on
+  // vise le même scrollThreshold(), qui correspond désormais au sommet de
+  // #approche, pour un centrage identique au clic et au scroll manuel.
+  var scrolldownBtn = document.getElementById('splash-scrolldown');
+  if(scrolldownBtn){
+    scrolldownBtn.addEventListener('click', function(){
+      window.scrollTo({top: scrollThreshold(), behavior: 'smooth'});
+    });
+  }
+
+  // "Contact" en bas de #approche : simple scroll en douceur vers la
+  // section suivante, sur cette même page (plus besoin de simuler un
+  // saut de page depuis que Contact fait partie du même document).
+  var approcheScrolldownBtn = document.getElementById('approche-scrolldown');
+  var contactSection = document.getElementById('contact');
+  if(approcheScrolldownBtn && contactSection){
+    approcheScrolldownBtn.addEventListener('click', function(){
+      contactSection.scrollIntoView({behavior: 'smooth', block: 'start'});
+    });
+  }
+
+  function type(){
+    if(i < text.length){
+      cursor.insertAdjacentText('beforebegin', text[i++]);
+      setTimeout(type, 72);
+    } else {
+      // curseur disparaît, la phrase d'accroche apparaît, pause (le temps de
+      // la lire), puis lancement du diaporama (logo centré → logo+menu en haut)
+      setTimeout(function(){
+        cursor.style.display = 'none';
+        var tagline = document.getElementById('splashTagline');
+        if(tagline) tagline.classList.add('show');
+
+        // une fois l'animation du logo terminée, l'internaute ne doit pas
+        // être forcé d'attendre la pause avant le diaporama : un clic
+        // n'importe où sur l'écran y passe directement
+        var launched = false;
+        var autoTimer = setTimeout(skipToSlideshow, 5500);
+        function skipToSlideshow(){
+          if(launched) return;
+          launched = true;
+          clearTimeout(autoTimer);
+          window.removeEventListener('click', skipToSlideshow);
+          launchSlideshow();
+        }
+        window.addEventListener('click', skipToSlideshow);
+      }, 700);
+    }
+  }
+
+  // effet machine à écrire du lien de prise de RDV : tape une première
+  // phrase d'accroche, l'efface, puis tape le texte final de l'action
+  function typeRdvText(){
+    var rdvEl = document.getElementById('rdv-text');
+    if(!rdvEl) return;
+    var first = 'Discutons de votre projet';
+    var second = 'Prendre rendez-vous';
+    var i = 0, j = 0;
+
+    function typeFirst(){
+      if(i < first.length){
+        rdvEl.textContent += first[i++];
+        setTimeout(typeFirst, 48);
+      } else {
+        setTimeout(eraseFirst, 1500);
+      }
+    }
+    function eraseFirst(){
+      if(rdvEl.textContent.length){
+        rdvEl.textContent = rdvEl.textContent.slice(0, -1);
+        setTimeout(eraseFirst, 24);
+      } else {
+        setTimeout(typeSecond, 300);
+      }
+    }
+    function typeSecond(){
+      if(j < second.length){
+        rdvEl.textContent += second[j++];
+        setTimeout(typeSecond, 48);
+      } else {
+        // le texte final est tapé : le curseur s'efface et le
+        // soulignement apparaît à sa place, pour signaler le lien
+        var cursorEl = document.getElementById('rdv-cursor');
+        if(cursorEl) cursorEl.classList.add('hidden');
+        setTimeout(function(){ rdvEl.classList.add('linked'); }, 150);
+        // le halo de WhatsApp ne démarre qu'une fois le lien de RDV posé,
+        // pour étaler les deux animations plutôt qu'elles ne coïncident
+        setTimeout(function(){
+          var wa = document.getElementById('wa-link-icon');
+          if(wa) wa.classList.add('pulse');
+        }, 700);
+      }
+    }
+    typeFirst();
+  }
+
+  // arrivée directe sur #approche, #contact (lien depuis la page Mentions
+  // légales) ou #projets (retour depuis une page projet) : on saute
+  // l'animation d'ouverture (nom tapé lettre à lettre, pause, lancement
+  // différé...) puisque l'utilisateur revient déjà sur le site — sans ça,
+  // la barre du haut/bas et le diaporama resteraient invisibles plusieurs
+  // secondes après l'arrivée.
+  if(window.location.hash === '#approche' || window.location.hash === '#contact' || window.location.hash === '#projets'){
+    launchSlideshow(true);
+  } else {
+    setTimeout(type, 400);
+  }
+})();
+
+</script>
+
+
+</body>
+</html>

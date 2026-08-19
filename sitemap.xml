@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.louisreynaerts.com/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.louisreynaerts.com/images/residence-aurore-facade-rhode-saint-genese.jpg</image:loc>
+      <image:title>Résidence Aurore, villa à appartements neuve à Rhode-Saint-Genèse</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.louisreynaerts.com/images/villa-eques-facade-rhode-saint-genese.jpg</image:loc>
+      <image:title>Villa Éques, villa unifamiliale neuve à Rhode-Saint-Genèse</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.louisreynaerts.com/images/villa-julia-renovation-salle-de-bain-waterloo.jpg</image:loc>
+      <image:title>Rénovation Villa Julia — salle de bain, Waterloo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.louisreynaerts.com/images/villa-julia-renovation-couloir-waterloo.jpg</image:loc>
+      <image:title>Rénovation Villa Julia — couloir, Waterloo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.louisreynaerts.com/images/villa-julia-renovation-cuisine-waterloo.jpg</image:loc>
+      <image:title>Rénovation Villa Julia — cuisine, Waterloo</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.louisreynaerts.com/residence-aurore.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.louisreynaerts.com/images/residence-aurore-facade-rhode-saint-genese.jpg</image:loc>
+      <image:title>Résidence Aurore, villa à appartements neuve à Rhode-Saint-Genèse</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.louisreynaerts.com/villa-eques.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.louisreynaerts.com/images/villa-eques-facade-rhode-saint-genese.jpg</image:loc>
+      <image:title>Villa Éques, villa unifamiliale neuve à Rhode-Saint-Genèse</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.louisreynaerts.com/renovation-villa-julia.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.louisreynaerts.com/images/villa-julia-renovation-salle-de-bain-waterloo.jpg</image:loc>
+      <image:title>Rénovation Villa Julia — salle de bain, Waterloo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.louisreynaerts.com/images/villa-julia-renovation-couloir-waterloo.jpg</image:loc>
+      <image:title>Rénovation Villa Julia — couloir, Waterloo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.louisreynaerts.com/images/villa-julia-renovation-cuisine-waterloo.jpg</image:loc>
+      <image:title>Rénovation Villa Julia — cuisine, Waterloo</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.louisreynaerts.com/conception-architecturale.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.louisreynaerts.com/suivi-execution.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.louisreynaerts.com/permis-urbanisme.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.louisreynaerts.com/regularisation.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.louisreynaerts.com/conception-interieurs.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>
