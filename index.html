@@ -443,6 +443,8 @@ html.intro-lock body{position:fixed;inset:0;width:100%}
   letter-spacing:.06em;
   color:var(--ink);
   line-height:1;
+  cursor:pointer;
+  pointer-events:auto;
 }
 #splash-top-menu{
   position:relative;
@@ -1190,7 +1192,7 @@ html.splash-interactive #splash-caption.show{pointer-events:auto}
      affichées en permanence — y compris au-dessus des sections suivantes
      — indépendamment du fondu du diaporama au scroll -->
 <div class="splash-topbar" id="splash-topbar">
-  <div id="splash-top-logo">LR</div>
+  <div id="splash-top-logo" role="button" tabindex="0" aria-label="Retour en haut de la page">LR</div>
   <div class="splash-topbar-right">
     <a id="splash-rdv" href="https://calendly.com/louisreynaerts-info/30min?month=2026-08" target="_blank" rel="noopener">
       <span id="rdv-text"></span><span id="rdv-cursor">|</span>
@@ -1373,6 +1375,22 @@ function openMenu(){
 menuToggleBtn.addEventListener('click', function(){
   if(menuOverlay){ closeMenu(); } else { openMenu(); }
 });
+
+// Logo "LR" de la barre du haut : cliquable depuis n'importe où sur la
+// page (Approche, Contact...) pour ramener le visiteur en haut, dans la
+// section Projets — même comportement que le lien "Projets" du menu.
+var topLogo = document.getElementById('splash-top-logo');
+if(topLogo){
+  topLogo.addEventListener('click', function(){
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+  topLogo.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+  });
+}
 
 // ── SPLASH ──
 (function(){
