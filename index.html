@@ -600,8 +600,10 @@ html.intro-lock body{position:fixed;inset:0;width:100%}
     background:var(--bg);
     /* marge horizontale alignée sur celle de la topbar (2.2rem), pour que
        le bord des photos tombe exactement sous le "L" du logo à gauche
-       et sous le "+" du menu à droite */
-    padding:.5rem 2.2rem 2rem;
+       et sous le "+" du menu à droite. Marge du haut un peu plus généreuse
+       (2rem) pour aérer visuellement la première image par rapport à la
+       barre du haut, juste au-dessus */
+    padding:2rem 2.2rem 2rem;
     /* désactivés tant que l'animation d'ouverture n'a pas cédé la place
        (voir html.splash-interactive plus bas, et son délai d'activation
        dans launchSlideshow) : #splash est pointer-events:none, donc un
