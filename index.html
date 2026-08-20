@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr-BE">
+<html lang="fr-BE" class="intro-lock">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
@@ -339,6 +339,17 @@ footer{
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
+/* tant que l'animation d'ouverture n'est pas terminée, impossible de
+   scroller pour "sauter" le diaporama et atterrir directement sur
+   #approche sans l'avoir vu : verrou par défaut au chargement (avant
+   même que le script ne s'exécute, pour ne jamais laisser passer un
+   scroll), retiré par JS une fois l'animation terminée (voir
+   launchSlideshow). position:fixed plutôt que overflow:hidden seul :
+   plus fiable contre le scroll (molette, tactile, et même
+   window.scrollTo déclenché par le navigateur pour une ancre d'URL). */
+html.intro-lock,html.intro-lock body{overflow:hidden}
+html.intro-lock body{position:fixed;inset:0;width:100%}
+
 /* ── SPLASH ── */
 #splash{
   position:fixed;inset:0;z-index:999;
@@ -411,7 +422,10 @@ footer{
   padding:1.6rem 2.2rem;
   display:flex;align-items:center;justify-content:space-between;
   background:var(--bg);
-  opacity:0;pointer-events:none;transition:opacity 1s ease;
+  /* même durée de fondu que #splash (.25s) : la barre du haut doit être
+     "directement" là dès que l'animation d'ouverture disparaît, sans
+     décalage perceptible entre les deux */
+  opacity:0;pointer-events:none;transition:opacity .25s ease;
   z-index:1000;
 }
 .splash-topbar.show{opacity:1}
@@ -564,7 +578,13 @@ footer{
   #mobile-projects{
     display:block;
     position:relative;
-    z-index:999;
+    /* sous #splash (z-index:999), pas au-dessus : tant que l'animation
+       d'ouverture est affichée (opaque), elle doit la recouvrir
+       entièrement ; c'est la disparition de #splash (opacité → 0, voir
+       splashDismissedMobile) qui révèle cette liste, pas un artifice de
+       superposition — un z-index égal ou supérieur ferait apparaître la
+       liste par-dessus l'animation dès le chargement */
+    z-index:1;
     background:var(--bg);
     /* marge horizontale alignée sur celle de la topbar (2.2rem), pour que
        le bord des photos tombe exactement sous le "L" du logo à gauche
@@ -787,7 +807,9 @@ a.field-value:hover{color:var(--mid)}
   display:flex;align-items:center;justify-content:space-between;
   flex-wrap:wrap;row-gap:.5rem;
   background:var(--bg);
-  opacity:0;transition:opacity 1s ease;
+  /* même durée de fondu que #splash (.25s), pour la même raison que la
+     topbar ci-dessus */
+  opacity:0;transition:opacity .25s ease;
   z-index:1000;
   pointer-events:none;
 }
@@ -1131,9 +1153,10 @@ a.field-value:hover{color:var(--mid)}
 <!-- PROJETS MOBILE — remplace le diaporama sur petit écran : les 3
      projets défilent en pleine largeur, l'un sous l'autre (plutôt que
      compressés côte à côte), façon MORQ. Masqué au-delà de 640px, où le
-     diaporama ci-dessus reste seul maître à bord. Même artifice de
-     recouvrement que #approche (position relative + z-index 999 + fond
-     opaque) pour couvrir #splash, fixe, au fil du scroll. -->
+     diaporama ci-dessus reste seul maître à bord. Reste sous #splash
+     (z-index:1 < 999, voir CSS) tant que l'animation d'ouverture est
+     affichée : c'est sa disparition (opacité → 0) qui révèle cette
+     liste, jamais une superposition par z-index. -->
 <section id="mobile-projects">
   <a class="mp-item" href="residence-aurore.html">
     <span class="mp-media"><img src="images/residence-aurore-facade-rhode-saint-genese.jpg" alt="Résidence Aurore, villa à appartements neuve à Rhode-Saint-Genèse — Louis Reynaerts Architecture"></span>
@@ -1428,6 +1451,11 @@ menuToggleBtn.addEventListener('click', function(){
   });
 
   function launchSlideshow(skipRdvTypewriter){
+    // l'animation d'ouverture est terminée (diaporama/liste de projets
+    // prêts à apparaître derrière) : on retire le verrou de scroll posé
+    // au chargement, plus aucune raison d'empêcher de descendre dans la
+    // page à partir d'ici
+    document.documentElement.classList.remove('intro-lock');
     document.getElementById('splash-logo').classList.add('hide');
     document.getElementById('splash-topbar').classList.add('show');
     document.getElementById('splash-bottombar').classList.add('show');
