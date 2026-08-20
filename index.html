@@ -778,6 +778,12 @@ html.intro-lock body{position:fixed;inset:0;width:100%}
   text-align:center;
   margin:auto;
 }
+.contact-kicker{
+  font-family:var(--sans);
+  font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mid);
+  margin-bottom:1.2rem;
+}
 .contact-title{
   font-family:var(--serif);
   font-style:italic;
@@ -792,6 +798,15 @@ html.intro-lock body{position:fixed;inset:0;width:100%}
   margin-bottom:3.6rem;
 }
 .contact-field{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.contact-note{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:clamp(.85rem,1.6vw,1rem);
+  line-height:1.75;
+  color:var(--mid);
+  max-width:460px;
+  margin:0 auto 3.2rem;
+}
 .field-label{
   font-family:var(--sans);
   font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
@@ -836,6 +851,7 @@ a.field-value:hover{color:var(--mid)}
   #contact{padding:5rem 1.4rem}
   .contact-title{margin-bottom:2.8rem}
   .contact-details{margin-bottom:2.8rem}
+  .contact-note{margin-bottom:2.6rem}
   .page-footer{margin-top:3rem}
 }
 
@@ -1250,6 +1266,7 @@ html.splash-interactive #splash-caption.show{pointer-events:auto}
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
+    <p class="contact-kicker">Première consultation offerte</p>
     <h2 class="contact-title">Discutons de votre projet.</h2>
     <div class="contact-details">
       <div class="contact-field">
@@ -1265,6 +1282,7 @@ html.splash-interactive #splash-caption.show{pointer-events:auto}
         <span class="field-value">Chaussée de Waterloo 792, 1180 Uccle, Belgique</span>
       </div>
     </div>
+    <p class="contact-note">Nous recevons également sur rendez-vous à Waterloo, au sein d'un de nos projets de rénovation — l'occasion de découvrir notre travail sur place.</p>
     <a class="contact-cta" href="https://calendly.com/louisreynaerts-info/30min?month=2026-08" target="_blank" rel="noopener">Prendre rendez-vous</a>
     <p class="page-footer">© 2026 Louis Reynaerts Architecture · <a href="mentions-legales.html">Mentions légales</a></p>
   </div>
