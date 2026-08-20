@@ -1210,12 +1210,12 @@ html.splash-interactive #splash-caption.show{pointer-events:auto}
   <a class="mp-item" href="residence-aurore.html">
     <span class="mp-media"><img src="images/residence-aurore-facade-rhode-saint-genese.jpg" alt="Résidence Aurore, villa à appartements neuve à Rhode-Saint-Genèse — Louis Reynaerts Architecture"></span>
     <span class="mp-name">Résidence Aurore</span>
-    <span class="mp-meta">Nouvelle construction · Rhode-Saint-Genèse, 2025</span>
+    <span class="mp-meta">Rhode-Saint-Genèse, 2025</span>
   </a>
   <a class="mp-item" href="villa-eques.html">
     <span class="mp-media"><img src="images/villa-eques-facade-rhode-saint-genese.jpg" alt="Villa Éques, villa unifamiliale neuve à Rhode-Saint-Genèse — Louis Reynaerts Architecture"></span>
     <span class="mp-name">Villa Éques</span>
-    <span class="mp-meta">Nouvelle construction · Rhode-Saint-Genèse, 2026</span>
+    <span class="mp-meta">Rhode-Saint-Genèse, 2026</span>
   </a>
   <a class="mp-item" href="renovation-villa-julia.html">
     <span class="mp-media mp-multi">
@@ -1357,8 +1357,8 @@ menuToggleBtn.addEventListener('click', function(){
 // ── SPLASH ──
 (function(){
   var slidesData = [
-    {id:'slide-0', name:'Résidence Aurore', type:'Nouvelle construction', meta:'Rhode-Saint-Genèse, 2025', href:'residence-aurore.html'},
-    {id:'slide-1', name:'Villa Éques', type:'Nouvelle construction', meta:'Rhode-Saint-Genèse, 2026', href:'villa-eques.html'},
+    {id:'slide-0', name:'Résidence Aurore', meta:'Rhode-Saint-Genèse, 2025', href:'residence-aurore.html'},
+    {id:'slide-1', name:'Villa Éques', meta:'Rhode-Saint-Genèse, 2026', href:'villa-eques.html'},
     {id:'slide-waterloo', name:'Villa Julia', type:'Rénovation', meta:'Waterloo, 2025', href:'renovation-villa-julia.html'}
   ];
   var current = 0, interval;
@@ -1456,7 +1456,10 @@ menuToggleBtn.addEventListener('click', function(){
 
   function showCaption(slide){
     capName.textContent = slide.name;
-    capMeta.textContent = slide.type + ' · ' + slide.meta;
+    // "type" (Nouvelle construction, Rénovation…) est facultatif : Aurore
+    // et Éques n'en ont plus (sous-titre retiré à la demande), Julia le
+    // garde — sans quoi un "type" absent laisserait un " · " orphelin
+    capMeta.textContent = slide.type ? (slide.type + ' · ' + slide.meta) : slide.meta;
     alignCaptions(document.getElementById(slide.id));
     capWrap.classList.add('show');
     var navEl = document.getElementById('splash-nav');
