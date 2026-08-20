@@ -29,6 +29,13 @@
 @font-face{font-family:'EB Garamond';font-style:normal;font-weight:100 900;src:url('fonts/EBGaramond-Regular.ttf') format('truetype')}
 @font-face{font-family:'EB Garamond';font-style:italic;font-weight:100 900;src:url('fonts/EBGaramond-Italic.ttf') format('truetype')}
 
+/* Safari iOS grossit parfois tout seul le texte d'un bloc qui passe à la
+   ligne dans une colonne étroite ("text inflation" / "font boosting") —
+   de façon imprévisible, sans lien avec le CSS déclaré. C'est ce qui
+   causait la légende agrandie par intermittence sous les projets en
+   mobile. On désactive ce comportement pour garder la taille de police
+   réellement fixée en CSS, partout et toujours. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 html{background:var(--bg);color:var(--ink)}
 body{
   font-family:var(--serif);
@@ -469,6 +476,11 @@ html.intro-lock body{position:fixed;inset:0;width:100%}
 .menu-cross span:first-child{width:20px;height:1px}
 .menu-cross span:last-child{width:1px;height:20px}
 .menu-cross.is-open{transform:rotate(225deg)}
+/* taille des liens du menu plein écran (Projets/Approche/Contact) : fixée
+   ici plutôt que dans le style en ligne (voir linkStyle, openMenu), pour
+   pouvoir la réduire en mobile ci-dessous sans toucher au reste */
+.menu-link{font-size:3rem}
+@media (max-width:640px){.menu-link{font-size:2rem}}
 .splash-topbar-right{
   display:flex;align-items:center;gap:1.4rem;
 }
@@ -590,7 +602,16 @@ html.intro-lock body{position:fixed;inset:0;width:100%}
        le bord des photos tombe exactement sous le "L" du logo à gauche
        et sous le "+" du menu à droite */
     padding:.5rem 2.2rem 2rem;
+    /* désactivés tant que l'animation d'ouverture n'a pas cédé la place
+       (voir html.splash-interactive plus bas, et son délai d'activation
+       dans launchSlideshow) : #splash est pointer-events:none, donc un
+       clic n'importe où sur l'écran — même pendant l'écriture du nom, ou
+       juste au moment où l'animation se termine — traverse tout droit
+       jusqu'à ces liens et ouvrait la page du projet au lieu de
+       simplement passer/terminer l'animation */
+    pointer-events:none;
   }
+  html.splash-interactive #mobile-projects{pointer-events:auto}
   .mp-item{
     display:block;
     text-decoration:none;
@@ -700,11 +721,14 @@ html.intro-lock body{position:fixed;inset:0;width:100%}
   margin-top:4.5rem;
 }
 @media (max-width:640px){
-  #approche{padding:5rem 1.4rem}
+  /* uniquement en mobile : la section n'a plus besoin de faire toute la
+     hauteur de l'écran (ça ne concerne que le fondu du diaporama desktop,
+     inutile ici) — sa hauteur suit son contenu, ce qui réduit le vide
+     avant d'atteindre #contact juste après */
+  #approche{min-height:auto;padding:5rem 1.4rem}
   .approche-title{margin-bottom:2.8rem;font-size:clamp(.95rem,5.8vw,1.9rem)}
   .approche-text p{margin-bottom:1.8rem}
   .approche-signature{margin-top:3rem}
-  #approche-scrolldown{margin-top:2.6rem}
 }
 
 /* indicateur de scroll placé après la signature, dans le flux normal du
@@ -722,6 +746,14 @@ html.intro-lock body{position:fixed;inset:0;width:100%}
 }
 #approche-scrolldown:hover .splash-scroll-label{color:var(--ink)}
 #approche-scrolldown:hover .splash-scroll-arrow{color:var(--ink)}
+/* la flèche "Nous contacter" n'a plus lieu d'être en mobile : avec les
+   deux sections resserrées l'une sur l'autre (voir #approche/#contact
+   min-height ci-dessus/dessous), #contact est déjà tout proche en
+   scrollant, pas besoin d'une invite dédiée. Cette règle doit rester
+   déclarée APRÈS le bloc #approche-scrolldown non lié à un @media
+   ci-dessus : à spécificité égale, sinon c'est ce bloc-là qui l'emporte
+   (vient plus tard dans la feuille de style, quel que soit l'écran) */
+@media (max-width:640px){#approche-scrolldown{display:none}}
 
 /* ── CONTACT ── même traitement que #approche : bloc centré, même
    z-index:999 pour la même raison (recouvrir #splash grâce à l'ordre du
@@ -792,6 +824,13 @@ a.field-value:hover{color:var(--mid)}
 .page-footer a{color:var(--mid);text-decoration:underline;transition:color .2s}
 .page-footer a:hover{color:var(--ink)}
 @media (max-width:640px){
+  /* #contact garde sa pleine hauteur d'écran (contrairement à #approche
+     juste au-dessus) : c'est la dernière section de la page, rien ne
+     suit derrière pour lui laisser la place de défiler jusqu'à occuper
+     tout l'écran — sans cette hauteur, le lien "Contact" du menu ne peut
+     pas amener une section plus courte que l'écran à s'y centrer
+     entièrement (le document n'a tout simplement plus de quoi défiler
+     jusque-là), et un bout d'Approche reste visible au-dessus */
   #contact{padding:5rem 1.4rem}
   .contact-title{margin-bottom:2.8rem}
   .contact-details{margin-bottom:2.8rem}
@@ -902,7 +941,14 @@ a.field-value:hover{color:var(--mid)}
   z-index:1;
   pointer-events:none;
 }
-#splash-slides.show{opacity:1;cursor:pointer;pointer-events:auto}
+#splash-slides.show{opacity:1;cursor:pointer}
+/* le clic vers la page du projet (goToCurrentProject) n'est réactivé
+   qu'un court instant après la fin de l'animation d'ouverture (voir
+   html.splash-interactive et son délai dans launchSlideshow), pas dans
+   le même mouvement que le fondu visuel : un clic qui coïncide avec la
+   toute fin de l'animation (minuteur automatique ou clic pour la passer)
+   ne doit jamais ouvrir un projet par accident */
+html.splash-interactive #splash-slides.show{pointer-events:auto}
 #splash-slides > img{
   position:absolute;inset:0;
   width:100%;height:100%;
@@ -976,7 +1022,10 @@ a.field-value:hover{color:var(--mid)}
   cursor:pointer;
   pointer-events:none;
 }
-#splash-caption.show{opacity:1;pointer-events:auto}
+#splash-caption.show{opacity:1}
+/* même délai que #splash-slides ci-dessus — la légende renvoie elle
+   aussi vers la page du projet (goToCurrentProject) */
+html.splash-interactive #splash-caption.show{pointer-events:auto}
 #splash-cap-name{
   font-family:Georgia,serif;
   font-size:clamp(.85rem,1.4vw,1.05rem);
@@ -1247,7 +1296,10 @@ function openMenu(){
   var cy = hbgRect.top + hbgRect.height / 2 - 10;
   var m=document.createElement('div');
   m.style.cssText='position:fixed;inset:0;background:#f7f5f2;z-index:1001;display:flex;flex-direction:column;justify-content:center;padding:2.5rem;gap:2rem;opacity:0;transition:opacity .35s ease';
-  var linkStyle='font-family:Georgia,serif;font-size:3rem;color:#111;text-decoration:none;letter-spacing:-.02em;background:none;border:none;padding:0;margin:0;text-align:left;cursor:pointer;display:block';
+  // la taille de police n'est plus fixée ici : voir la règle CSS
+  // .menu-link (et sa variante mobile) pour qu'elle reste réduite sur
+  // petit écran sans jamais affecter le desktop
+  var linkStyle='font-family:Georgia,serif;color:#111;text-decoration:none;letter-spacing:-.02em;background:none;border:none;padding:0;margin:0;text-align:left;cursor:pointer;display:block';
   m.innerHTML=`
     <button type="button" class="menu-link" data-action="projets" style="${linkStyle}">Projets,</button>
     <button type="button" class="menu-link" data-action="approche" style="${linkStyle}">Approche,</button>
@@ -1493,6 +1545,26 @@ menuToggleBtn.addEventListener('click', function(){
       splashDismissedMobile = true;
       syncSplashOpacity();
     }
+
+    // les photos/légendes du diaporama (desktop) et les projets de la
+    // liste (mobile) ne deviennent cliquables que 2 secondes APRÈS la fin
+    // de l'animation (voir html.splash-interactive dans le CSS), jamais
+    // dans le même mouvement que leur apparition visuelle : le temps que
+    // le visiteur se pose sur la page d'accueil, sans qu'un clic — celui
+    // qui fait sauter l'animation, un clic malheureux juste au moment où
+    // le minuteur automatique la termine, ou un premier clic un peu trop
+    // rapide une fois arrivé — puisse ouvrir un projet par accident. Sans
+    // délai pour une arrivée directe depuis #approche/#contact/#projets :
+    // là, aucune animation n'a été jouée (donc rien à "sauter"), le
+    // visiteur est déjà réputé posé sur le site, l'interactivité doit
+    // être immédiate.
+    if(skipRdvTypewriter){
+      document.documentElement.classList.add('splash-interactive');
+    } else {
+      setTimeout(function(){
+        document.documentElement.classList.add('splash-interactive');
+      }, 2000);
+    }
   }
 
   // avance (ou recule, delta:-1) d'une diapositive — utilisée aussi bien
@@ -1607,14 +1679,24 @@ menuToggleBtn.addEventListener('click', function(){
         // n'importe où sur l'écran y passe directement
         var launched = false;
         var autoTimer = setTimeout(skipToSlideshow, 5500);
-        function skipToSlideshow(){
+        function skipToSlideshow(e){
           if(launched) return;
           launched = true;
+          // ce même clic tombe géométriquement sur ce qui se trouve déjà
+          // sous l'écran d'ouverture (une photo du diaporama tout juste
+          // rendue cliquable en version desktop, un projet de la liste en
+          // version mobile — voir #splash, pointer-events:none) : sans ceci,
+          // le clic qui sert à passer l'animation ouvre AUSSI la page du
+          // projet en dessous, alors que le visiteur doit atterrir sur la
+          // page d'accueil. Capture + stopPropagation empêchent l'événement
+          // d'atteindre cet élément sous-jacent (déclenché par le minuteur
+          // automatique, "e" est alors absent : rien à intercepter).
+          if(e){ e.preventDefault(); e.stopPropagation(); }
           clearTimeout(autoTimer);
-          window.removeEventListener('click', skipToSlideshow);
+          window.removeEventListener('click', skipToSlideshow, true);
           launchSlideshow();
         }
-        window.addEventListener('click', skipToSlideshow);
+        window.addEventListener('click', skipToSlideshow, true);
       }, 700);
     }
   }

@@ -26,6 +26,12 @@
   --serif:'Lora',Georgia,serif;
   --sans:'Helvetica Neue',Helvetica,Arial,sans-serif;
 }
+/* Safari iOS grossit parfois tout seul le texte d'un bloc qui passe à la
+   ligne dans une colonne étroite ("text inflation" / "font boosting") —
+   de façon imprévisible, sans lien avec le CSS déclaré. On désactive ce
+   comportement pour garder la taille de police réellement fixée en CSS,
+   partout et toujours. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 html{background:var(--bg);color:var(--ink)}
 body{
   font-family:var(--serif);
