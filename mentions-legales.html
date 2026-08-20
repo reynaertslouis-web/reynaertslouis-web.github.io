@@ -40,8 +40,7 @@ body{
   position:fixed;top:0;left:0;right:0;
   padding:1.6rem 2.2rem;
   display:flex;align-items:center;justify-content:space-between;
-  background:rgba(247,245,242,.82);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  background:var(--bg);
   z-index:1000;
 }
 #top-logo{
@@ -162,8 +161,7 @@ body{
   padding:1.6rem 2.2rem;
   display:flex;align-items:center;justify-content:space-between;
   flex-wrap:wrap;row-gap:.5rem;
-  background:rgba(247,245,242,.82);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  background:var(--bg);
   z-index:1000;
 }
 .bottom-contact{
@@ -209,7 +207,7 @@ body{
    icônes restent visibles), le bloc téléphone/e-mail n'est jamais
    modifié */
 @media (max-width:640px){
-  .bottombar{flex-wrap:nowrap;padding:1.4rem 1.1rem}
+  .bottombar{flex-wrap:nowrap;padding:1.4rem 2.2rem}
   .link-label{display:none}
 }
 
