@@ -1472,14 +1472,35 @@ if(topLogo){
   function sizeTriptych(){
     var group = document.querySelector('#slide-waterloo .slide-triptych-group');
     var ref = document.getElementById('slide-0');
-    if(!group || !ref || !ref.naturalWidth) return;
+    if(!group || !ref) return;
+    if(!ref.naturalWidth){
+      // slide-0 pas encore chargée (retour rapide sur la page, cache vide…) :
+      // on retente une fois dès qu'elle le sera, plutôt que d'abandonner le
+      // dimensionnement du triptyque pour de bon
+      ref.addEventListener('load', sizeTriptych, {once:true});
+      return;
+    }
     var r = containRect(ref.naturalWidth, ref.naturalHeight);
     group.style.width = r.w + 'px';
     group.style.height = r.h + 'px';
   }
 
-  function alignCaptions(el){
+  // "cb" ne s'exécute qu'une fois le rectangle réellement affiché (photo
+  // chargée) connu — évite de positionner la légende/le kicker/la nav sur
+  // la base d'une image pas encore chargée (naturalWidth à 0), ce qui la
+  // faisait passer par la branche "triptyque" par erreur et atterrir tout
+  // en bas du cadre plutôt que sous la photo (cas rencontré en revenant
+  // rapidement sur la page d'accueil depuis une autre page, quand l'image
+  // n'a pas encore eu le temps de se charger)
+  function alignCaptions(el, cb){
     if(!el) return;
+    if(el.tagName === 'IMG' && !el.complete){
+      el.addEventListener('load', function once(){
+        el.removeEventListener('load', once);
+        alignCaptions(el, cb);
+      });
+      return;
+    }
     var wrapRect = slidesWrap.getBoundingClientRect();
     var centerRect = centerWrap.getBoundingClientRect();
     var renderedW, renderedH, offX, offY;
@@ -1523,6 +1544,7 @@ if(topLogo){
       navEl.style.right = (centerRect.width - right) + 'px';
       navEl.style.top = top + 'px';
     }
+    if(cb) cb();
   }
 
   function showCaption(slide){
@@ -1531,10 +1553,15 @@ if(topLogo){
     // et Éques n'en ont plus (sous-titre retiré à la demande), Julie le
     // garde — sans quoi un "type" absent laisserait un " · " orphelin
     capMeta.textContent = slide.type ? (slide.type + ' · ' + slide.meta) : slide.meta;
-    alignCaptions(document.getElementById(slide.id));
-    capWrap.classList.add('show');
-    var navEl = document.getElementById('splash-nav');
-    if(navEl) navEl.classList.add('show');
+    // le "show" (fondu d'apparition) n'est déclenché qu'une fois la
+    // position réellement calculée sur l'image chargée (voir alignCaptions
+    // ci-dessus) — sinon la légende pourrait brièvement s'afficher au
+    // mauvais endroit le temps que l'image finisse de charger
+    alignCaptions(document.getElementById(slide.id), function(){
+      capWrap.classList.add('show');
+      var navEl = document.getElementById('splash-nav');
+      if(navEl) navEl.classList.add('show');
+    });
   }
 
   // ouvre la page du projet actuellement affiché — utilisée à la fois par
