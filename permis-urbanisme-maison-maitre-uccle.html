@@ -75,6 +75,27 @@ body{
 }
 #rdv-link:hover{color:var(--mid)}
 
+/* précision "Première consultation offerte" sous le bouton de RDV du
+   header — même écriture italique que le reste du site, toujours
+   visible (pas d'animation à attendre ici, contrairement à la page
+   d'accueil où le bouton se tape lettre à lettre) */
+.rdv-wrap{position:relative;display:inline-flex;align-items:baseline}
+.rdv-hint{
+  position:absolute;top:100%;right:0;margin-top:.1rem;
+  white-space:nowrap;pointer-events:none;
+}
+.rdv-hint-text{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:clamp(.66rem,1.5vw,.76rem);
+  color:var(--mid);
+  line-height:1;
+}
+@media (max-width:640px){
+  .rdv-hint{margin-top:.08rem}
+  .rdv-hint-text{font-size:clamp(.6rem,2.4vw,.68rem)}
+}
+
 #menu-toggle{
   position:relative;
   width:20px;height:20px;
@@ -103,6 +124,18 @@ body{
 .menu-cross span:first-child{width:20px;height:1px}
 .menu-cross span:last-child{width:1px;height:20px}
 .menu-cross.is-open{transform:rotate(225deg)}
+/* 4e lien du menu ("Questions fréquentes"), volontairement plus discret
+   que Projets/Approche/Contact — voir même logique sur la page d'accueil */
+.menu-link-faq{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:1.05rem;
+  font-weight:400;
+  color:var(--mid);
+  letter-spacing:0;
+  margin-top:.4rem;
+}
+@media (max-width:640px){.menu-link-faq{font-size:.92rem}}
 
 /* ── page projet : même esprit que le reste du site — beaucoup de
    respiration, typographie seule, une seule photo en ouverture ── */
@@ -317,7 +350,10 @@ body{
 <div class="topbar">
   <a id="top-logo" href="index.html#projets">LR</a>
   <div class="topbar-right">
-    <a id="rdv-link" href="https://calendly.com/louisreynaerts-info/30min?month=2026-08" target="_blank" rel="noopener">Prendre rendez-vous</a>
+    <span class="rdv-wrap">
+      <a id="rdv-link" href="https://calendly.com/louisreynaerts-info/30min?month=2026-08" target="_blank" rel="noopener">Prendre rendez-vous</a>
+      <span class="rdv-hint" aria-hidden="true"><span class="rdv-hint-text">Première consultation offerte</span></span>
+    </span>
     <button id="menu-toggle" aria-label="Menu"><span></span><span></span></button>
   </div>
 </div>
@@ -393,6 +429,7 @@ function openMenu(){
     <a href="index.html#projets" style="${linkStyle}">Projets,</a>
     <a href="index.html#approche" style="${linkStyle}">Approche,</a>
     <a href="index.html#contact" style="${linkStyle}">Contact,</a>
+    <a href="index.html#faq" class="menu-link-faq" style="text-decoration:none;display:block">FAQ</a>
     <button class="menu-cross" aria-label="Fermer le menu" style="position:fixed;left:${cx}px;top:${cy}px"><span></span><span></span></button>
   `;
   document.body.appendChild(m);

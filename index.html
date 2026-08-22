@@ -483,6 +483,20 @@ html.intro-lock body{position:fixed;inset:0;width:100%}
    pouvoir la réduire en mobile ci-dessous sans toucher au reste */
 .menu-link{font-size:3rem}
 @media (max-width:640px){.menu-link{font-size:2rem}}
+/* 4e lien du menu ("Questions fréquentes") : volontairement plus discret
+   que Projets/Approche/Contact — taille réduite, italique, couleur
+   atténuée, léger décalage vers le haut pour se détacher visuellement
+   du groupe des 3 liens principaux plutôt que de s'aligner dessus */
+.menu-link-faq{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:1.05rem;
+  font-weight:400;
+  color:var(--mid);
+  letter-spacing:0;
+  margin-top:.4rem;
+}
+@media (max-width:640px){.menu-link-faq{font-size:.92rem}}
 .splash-topbar-right{
   display:flex;align-items:center;gap:1.4rem;
 }
@@ -581,7 +595,7 @@ html.intro-lock body{position:fixed;inset:0;width:100%}
    plutôt que compressés côte à côte comme le impose la largeur de
    l'écran au diaporama. Chaque vignette (.mp-media) partage le même
    format (16/9) pour rester cohérente d'un projet à l'autre : pour
-   Villa Julia, dont le triptyque ne peut pas tenir en une seule photo,
+   Villa Julie, dont le triptyque ne peut pas tenir en une seule photo,
    les 3 images se partagent cette même vignette côte à côte — même
    principe que le triptyque du diaporama desktop — plutôt qu'une seule
    pleine largeur. Bonne respiration entre chaque projet, et entre
@@ -759,10 +773,31 @@ html.intro-lock body{position:fixed;inset:0;width:100%}
    (vient plus tard dans la feuille de style, quel que soit l'écran) */
 @media (max-width:640px){#approche-scrolldown{display:none}}
 
+/* même indicateur de scroll, cette fois en bas de #contact vers #faq —
+   contrairement à #approche-scrolldown, celui-ci reste visible en
+   mobile : #contact et #faq gardent chacune leur pleine hauteur d'écran
+   sur petit écran (voir #contact/#faq min-height plus bas/haut), la FAQ
+   n'est donc pas "juste à côté" comme l'était #contact depuis #approche */
+#contact-scrolldown{
+  /* inline-flex + width:100% : reste un élément de niveau "inline" (donc
+     centré par le text-align:center de .contact-inner comme
+     #approche-scrolldown), mais sa largeur à 100% ne laisse plus la
+     place de tenir à côté de .contact-cta (inline-block) qui le précède
+     — il est donc rejeté sur sa propre ligne, comme du texte qui
+     retourne à la ligne faute de place */
+  display:inline-flex;flex-direction:column;align-items:center;gap:.6rem;
+  width:100%;
+  margin-top:3.5rem;
+  background:none;border:none;padding:0;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+#contact-scrolldown:hover .splash-scroll-label{color:var(--ink)}
+#contact-scrolldown:hover .splash-scroll-arrow{color:var(--ink)}
+
 /* ── CONTACT ── même traitement que #approche : bloc centré, même
    z-index:999 pour la même raison (recouvrir #splash grâce à l'ordre du
-   DOM, sans jamais passer au-dessus des barres fixes à 1000). Seule la
-   dernière section de la page n'a pas besoin d'indicateur de scroll */
+   DOM, sans jamais passer au-dessus des barres fixes à 1000) */
 #contact{
   position:relative;
   z-index:999;
@@ -836,6 +871,7 @@ a.field-value:hover{color:var(--mid)}
 .contact-cta:hover{color:var(--mid);border-color:var(--mid)}
 .page-footer{
   margin-top:4.5rem;
+  text-align:center;
   font-family:var(--sans);
   font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
   color:var(--mid);
@@ -855,6 +891,92 @@ a.field-value:hover{color:var(--mid)}
   .contact-details{margin-bottom:2.8rem}
   .contact-note{margin-bottom:2.6rem}
   .page-footer{margin-top:3rem}
+}
+
+/* ── FAQ ── section à part entière après Contact, même traitement que
+   Approche/Contact (centrée verticalement dans la fenêtre via
+   min-height:100vh) ; accessible depuis le menu plein écran via un 4e
+   lien "Questions fréquentes", volontairement plus discret que
+   Projets/Approche/Contact (voir .menu-link-faq) */
+#faq{
+  position:relative;
+  z-index:999;
+  background:var(--bg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  min-height:100dvh;
+  padding:6rem 2rem;
+}
+.faq-inner{
+  max-width:720px;
+  width:100%;
+  margin:0 auto;
+}
+.faq-title{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(1.7rem,3.4vw,2.4rem);
+  line-height:1.2;
+  color:var(--ink);
+  text-align:center;
+  margin-bottom:3.2rem;
+}
+.faq-list{
+  border-top:1px solid rgba(17,17,17,.1);
+}
+.faq-item{
+  border-bottom:1px solid rgba(17,17,17,.1);
+}
+.faq-question{
+  width:100%;
+  display:flex;align-items:center;justify-content:space-between;gap:1.4rem;
+  background:none;border:none;cursor:pointer;
+  padding:1.6rem 0;
+  font-family:var(--serif);
+  font-size:clamp(1rem,1.6vw,1.12rem);
+  color:var(--ink);
+  text-align:left;
+  transition:color .2s;
+}
+.faq-question:hover{color:var(--mid)}
+.faq-icon{
+  position:relative;flex:none;
+  width:14px;height:14px;
+}
+.faq-icon span{
+  position:absolute;left:50%;top:50%;
+  background:var(--ink);
+  transform:translate(-50%,-50%);
+}
+.faq-icon span:first-child{width:14px;height:1px}
+.faq-icon span:last-child{width:1px;height:14px;transition:transform .3s ease}
+.faq-question[aria-expanded="true"] .faq-icon span:last-child{transform:translate(-50%,-50%) scaleY(0)}
+.faq-answer-wrap{
+  display:grid;
+  grid-template-rows:0fr;
+  transition:grid-template-rows .35s ease;
+}
+.faq-answer-wrap.is-open{grid-template-rows:1fr}
+.faq-answer{overflow:hidden}
+.faq-answer p{
+  font-family:var(--serif);
+  font-size:clamp(.92rem,1.3vw,1.02rem);
+  line-height:1.85;
+  color:var(--mid);
+  padding-bottom:1.8rem;
+  max-width:640px;
+}
+@media (max-width:640px){
+  /* dernière section de la page (comme #contact ci-dessus) : garde sa
+     pleine hauteur d'écran pour que le lien "Questions fréquentes" du
+     menu puisse l'amener à occuper tout l'écran au scroll */
+  #faq{padding:5rem 1.4rem}
+  .faq-title{margin-bottom:2.4rem}
+  .faq-question{padding:1.3rem 0;font-size:.95rem}
+  .faq-answer p{padding-bottom:1.4rem}
 }
 
 /* barre de contact en bas, symétrique de la topbar — apparaît en même
@@ -1129,10 +1251,19 @@ html.splash-interactive #splash-caption.show{pointer-events:auto}
     "Bruxelles",
     "Uccle",
     "Ixelles",
+    "Woluwe-Saint-Pierre",
+    "Watermael-Boitsfort",
     "Waterloo",
     "Rhode-Saint-Genèse",
+    "Genval",
+    "La Hulpe",
+    "Rixensart",
+    "Chaumont-Gistoux",
+    "Lasne",
+    "Braine-l'Alleud",
     "Brabant wallon",
-    "Brabant flamand"
+    "Brabant flamand",
+    "Belgique"
   ],
   "sameAs": [
     "https://www.instagram.com/louis.reynaerts.architecture/"
@@ -1163,9 +1294,9 @@ html.splash-interactive #splash-caption.show{pointer-events:auto}
       <img id="slide-0" src="images/residence-aurore-facade-rhode-saint-genese.jpg" alt="Résidence Aurore, villa à appartements neuve à Rhode-Saint-Genèse — Louis Reynaerts Architecture">
     <div id="slide-waterloo" class="slide-triptych">
       <div class="slide-triptych-group">
-      <img src="images/villa-julia-renovation-salle-de-bain-waterloo.jpg" alt="Rénovation Villa Julia — salle de bain, Waterloo, Louis Reynaerts Architecture">
-      <img src="images/villa-julia-renovation-couloir-waterloo.jpg" alt="Rénovation Villa Julia — couloir, Waterloo, Louis Reynaerts Architecture">
-      <img src="images/villa-julia-renovation-cuisine-waterloo.jpg" alt="Rénovation Villa Julia — cuisine, Waterloo, Louis Reynaerts Architecture">
+      <img src="images/villa-julie-renovation-salle-de-bain-waterloo.jpg" alt="Rénovation Villa Julie — salle de bain, Waterloo, Louis Reynaerts Architecture">
+      <img src="images/villa-julie-renovation-couloir-waterloo.jpg" alt="Rénovation Villa Julie — couloir, Waterloo, Louis Reynaerts Architecture">
+      <img src="images/villa-julie-renovation-cuisine-waterloo.jpg" alt="Rénovation Villa Julie — cuisine, Waterloo, Louis Reynaerts Architecture">
     </div>
     </div>
     </div>
@@ -1237,13 +1368,13 @@ html.splash-interactive #splash-caption.show{pointer-events:auto}
     <span class="mp-name">Villa Éques</span>
     <span class="mp-meta">Rhode-Saint-Genèse, 2026</span>
   </a>
-  <a class="mp-item" href="renovation-villa-julia.html">
+  <a class="mp-item" href="renovation-villa-julie.html">
     <span class="mp-media mp-multi">
-      <img src="images/villa-julia-renovation-salle-de-bain-waterloo.jpg" alt="Rénovation Villa Julia — salle de bain, Waterloo, Louis Reynaerts Architecture">
-      <img src="images/villa-julia-renovation-couloir-waterloo.jpg" alt="Rénovation Villa Julia — couloir, Waterloo, Louis Reynaerts Architecture">
-      <img src="images/villa-julia-renovation-cuisine-waterloo.jpg" alt="Rénovation Villa Julia — cuisine, Waterloo, Louis Reynaerts Architecture">
+      <img src="images/villa-julie-renovation-salle-de-bain-waterloo.jpg" alt="Rénovation Villa Julie — salle de bain, Waterloo, Louis Reynaerts Architecture">
+      <img src="images/villa-julie-renovation-couloir-waterloo.jpg" alt="Rénovation Villa Julie — couloir, Waterloo, Louis Reynaerts Architecture">
+      <img src="images/villa-julie-renovation-cuisine-waterloo.jpg" alt="Rénovation Villa Julie — cuisine, Waterloo, Louis Reynaerts Architecture">
     </span>
-    <span class="mp-name">Villa Julia</span>
+    <span class="mp-name">Villa Julie</span>
     <span class="mp-meta">Rénovation · Waterloo, 2025</span>
   </a>
 </section>
@@ -1253,9 +1384,10 @@ html.splash-interactive #splash-caption.show{pointer-events:auto}
   <div class="approche-inner">
     <h2 class="approche-title">Une approche sur-mesure</h2>
     <div class="approche-text">
-      <p>Louis Reynaerts Architecture est une agence d'architecture contemporaine, active en Belgique comme à l'international. Elle associe architecture et design d'intérieur dans une approche globale et sur mesure, spécialisée dans la conception et la rénovation de villas, maisons, appartements et résidences d'exception. Implantée à Bruxelles, à Uccle, à la lisière d'Ixelles, ainsi qu'à Waterloo, dans le Brabant wallon, l'agence intervient dans toute la Belgique et s'ouvre également à des projets à l'étranger.</p>
+      <p>Louis Reynaerts est architecte, diplômé de l'Université libre de Bruxelles et inscrit à l'Ordre des Architectes. Il a intégré durant plusieurs années des bureaux renommés, tels que Counson Architecture à Genève, en Suisse, et Olivier Dwek à Bruxelles et à Paris, avant de fonder son propre bureau, Louis Reynaerts Architecture, animé par une vision holistique du projet, où architecture et conception d'intérieurs d'exception se répondent pour créer des lieux de vie uniques et intemporels, profondément ancrés dans leur environnement.</p>
+      <p>L'agence est spécialisée dans l'architecture résidentielle : <a href="construction-neuve.html">nouvelles constructions</a>, <a href="extension.html">extensions</a>, <a href="surelevation.html">surélévations</a> et <a href="renovation.html">rénovations</a> de villas, maisons, appartements et résidences d'exception.</p>
+      <p>Implantée à Bruxelles, à Uccle, à la lisière d'Ixelles, ainsi qu'à Waterloo, dans le Brabant wallon, l'agence intervient dans toute la Belgique et s'ouvre également à des projets à l'étranger, avec une connaissance particulière du sud de Bruxelles et du Brabant wallon — notamment Uccle, Waterloo, Ixelles, Rhode-Saint-Genèse, La Hulpe, Genval, Rixensart, etc.</p>
       <p>Les missions proposées couvrent <a href="conception-architecturale.html">la conception architecturale</a>, <a href="suivi-execution.html">le suivi de l'exécution</a>, l'introduction des demandes de <a href="permis-urbanisme.html">permis d'urbanisme</a> et de <a href="regularisation.html">régularisation</a>, ainsi que <a href="conception-interieurs.html">la conception d'intérieurs</a>, avec une attention particulière portée aux ambiances, aux matériaux et aux détails.</p>
-      <p>Diplômé en architecture de l'Université libre de Bruxelles, Louis Reynaerts a intégré durant plusieurs années des bureaux renommés, tels que Counson Architecture à Genève, en Suisse, et Olivier Dwek à Bruxelles et à Paris. Fort de ces expériences, il fonde son propre bureau, animé par une vision holistique du projet, où architecture et conception d'intérieurs d'exception se répondent pour créer des lieux de vie uniques et intemporels, profondément ancrés dans leur environnement.</p>
     </div>
     <p class="approche-signature">Louis Reynaerts Architecture</p>
     <button type="button" id="approche-scrolldown" aria-label="Aller à la section Contact">
@@ -1286,6 +1418,92 @@ html.splash-interactive #splash-caption.show{pointer-events:auto}
     </div>
     <p class="contact-note">Nous recevons également sur rendez-vous à Waterloo, au sein d'un de nos projets de rénovation — l'occasion de découvrir notre travail sur place.</p>
     <a class="contact-cta" href="https://calendly.com/louisreynaerts-info/30min?month=2026-08" target="_blank" rel="noopener">Prendre rendez-vous</a>
+    <button type="button" id="contact-scrolldown" aria-label="Aller à la FAQ">
+      <span class="splash-scroll-label">Questions fréquentes</span>
+      <span class="splash-scroll-arrow">↓</span>
+    </button>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-inner">
+    <h2 class="faq-title">Questions fréquentes</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Le recours à un architecte est-il obligatoire ?</span>
+          <span class="faq-icon"><span></span><span></span></span>
+        </button>
+        <div class="faq-answer-wrap">
+          <div class="faq-answer">
+            <p>En Belgique, la loi impose le recours à un architecte pour tout projet nécessitant un permis d'urbanisme : construction neuve, transformation touchant à la stabilité ou à l'aspect extérieur, changement d'affectation. Seuls certains travaux mineurs explicitement dispensés de permis échappent à cette obligation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Quelle est la mission légale de l'architecte ?</span>
+          <span class="faq-icon"><span></span><span></span></span>
+        </button>
+        <div class="faq-answer-wrap">
+          <div class="faq-answer">
+            <p>Elle comprend deux phases : la conception (plans et documents nécessaires à la demande de permis, coordination des études techniques) et le contrôle de l'exécution (suivi des corps de métier jusqu'à la réception des travaux). Chez Louis Reynaerts Architecture, cette mission s'accompagne toujours d'un travail de conception d'intérieurs, pensé dès les premières esquisses.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Comment sont calculés les honoraires ?</span>
+          <span class="faq-icon"><span></span><span></span></span>
+        </button>
+        <div class="faq-answer-wrap">
+          <div class="faq-answer">
+            <p>Plusieurs méthodes existent (pourcentage de la valeur des travaux, montant au m², forfait, taux horaire) ; nous adaptons la formule à la nature et à la complexité du projet lors d'un premier échange offert. Les taux sont généralement un peu plus élevés pour une rénovation que pour une construction neuve, en raison du travail d'analyse de l'existant.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>L'architecte est-il assuré ?</span>
+          <span class="faq-icon"><span></span><span></span></span>
+        </button>
+        <div class="faq-answer-wrap">
+          <div class="faq-answer">
+            <p>Oui. Comme tous les architectes belges, nous sommes couverts par une assurance responsabilité civile professionnelle et décennale, obligatoire pour tout dommage touchant à la solidité ou à la stabilité de l'ouvrage apparaissant dans les dix ans suivant la réception des travaux.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Le projet doit-il respecter des exigences énergétiques (PEB) ?</span>
+          <span class="faq-icon"><span></span><span></span></span>
+        </button>
+        <div class="faq-answer-wrap">
+          <div class="faq-answer">
+            <p>Oui, la quasi-totalité des projets soumis à permis d'urbanisme doivent respecter la réglementation PEB, avec des exigences renforcées pour les constructions neuves. Nous intégrons ces exigences dès les premières esquisses, en coordination avec les ingénieurs techniques.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Dans quelle zone intervenez-vous ?</span>
+          <span class="faq-icon"><span></span><span></span></span>
+        </button>
+        <div class="faq-answer-wrap">
+          <div class="faq-answer">
+            <p>Basée à Waterloo et à Uccle, l'agence intervient dans tout le sud de Bruxelles et le Brabant wallon, ainsi que plus largement en Belgique et à l'étranger selon les projets.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
     <p class="page-footer">© 2026 Louis Reynaerts Architecture · <a href="mentions-legales.html">Mentions légales</a></p>
   </div>
 </section>
@@ -1322,10 +1540,15 @@ function openMenu(){
   // .menu-link (et sa variante mobile) pour qu'elle reste réduite sur
   // petit écran sans jamais affecter le desktop
   var linkStyle='font-family:Georgia,serif;color:#111;text-decoration:none;letter-spacing:-.02em;background:none;border:none;padding:0;margin:0;text-align:left;cursor:pointer;display:block';
+  // "Questions fréquentes" : 4e lien, volontairement à part — pas de
+  // linkStyle (taille/police fixées par .menu-link-faq en CSS, voir plus
+  // haut), pour rester nettement plus discret que les 3 liens principaux
+  var faqLinkStyle='background:none;border:none;padding:0;margin:0;text-align:left;cursor:pointer;display:block';
   m.innerHTML=`
     <button type="button" class="menu-link" data-action="projets" style="${linkStyle}">Projets,</button>
     <button type="button" class="menu-link" data-action="approche" style="${linkStyle}">Approche,</button>
     <button type="button" class="menu-link" data-action="contact" style="${linkStyle}">Contact,</button>
+    <button type="button" class="menu-link-faq" data-action="faq" style="${faqLinkStyle}">FAQ</button>
     <button class="menu-cross" aria-label="Fermer le menu" style="position:fixed;left:${cx}px;top:${cy}px"><span></span><span></span></button>
   `;
   document.body.appendChild(m);
@@ -1361,6 +1584,14 @@ function openMenu(){
       if(contactSection) contactSection.scrollIntoView({behavior: 'smooth', block: 'start'});
     });
   }
+  var faqBtn = m.querySelector('[data-action="faq"]');
+  if(faqBtn){
+    faqBtn.addEventListener('click', function(){
+      closeMenu();
+      var faqSection = document.getElementById('faq');
+      if(faqSection) faqSection.scrollIntoView({behavior: 'smooth', block: 'start'});
+    });
+  }
   // laisse le premier rendu (état "+" / opacité 0) s'appliquer avant de
   // déclencher la transition, sinon le navigateur saute directement à
   // l'état final sans animer
@@ -1392,12 +1623,24 @@ if(topLogo){
   });
 }
 
+// FAQ : chaque question se déplie indépendamment (plusieurs peuvent être
+// ouvertes en même temps), via une grille CSS animée (grid-template-rows
+// 0fr → 1fr) plutôt qu'une mesure de hauteur en JS.
+document.querySelectorAll('.faq-question').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    var wrap = btn.nextElementSibling;
+    if(wrap) wrap.classList.toggle('is-open', !expanded);
+  });
+});
+
 // ── SPLASH ──
 (function(){
   var slidesData = [
     {id:'slide-0', name:'Résidence Aurore', meta:'Rhode-Saint-Genèse, 2025', href:'residence-aurore.html'},
     {id:'slide-1', name:'Villa Éques', meta:'Rhode-Saint-Genèse, 2026', href:'villa-eques.html'},
-    {id:'slide-waterloo', name:'Villa Julia', type:'Rénovation', meta:'Waterloo, 2025', href:'renovation-villa-julia.html'}
+    {id:'slide-waterloo', name:'Villa Julie', type:'Rénovation', meta:'Waterloo, 2025', href:'renovation-villa-julie.html'}
   ];
   var current = 0, interval;
   // une fois vrai (mobile uniquement, voir launchSlideshow), l'écran
@@ -1495,7 +1738,7 @@ if(topLogo){
   function showCaption(slide){
     capName.textContent = slide.name;
     // "type" (Nouvelle construction, Rénovation…) est facultatif : Aurore
-    // et Éques n'en ont plus (sous-titre retiré à la demande), Julia le
+    // et Éques n'en ont plus (sous-titre retiré à la demande), Julie le
     // garde — sans quoi un "type" absent laisserait un " · " orphelin
     capMeta.textContent = slide.type ? (slide.type + ' · ' + slide.meta) : slide.meta;
     alignCaptions(document.getElementById(slide.id));
@@ -1703,6 +1946,16 @@ if(topLogo){
     });
   }
 
+  // "Questions fréquentes" en bas de #contact : même principe, vers la
+  // section FAQ juste après
+  var contactScrolldownBtn = document.getElementById('contact-scrolldown');
+  var faqSectionEl = document.getElementById('faq');
+  if(contactScrolldownBtn && faqSectionEl){
+    contactScrolldownBtn.addEventListener('click', function(){
+      faqSectionEl.scrollIntoView({behavior: 'smooth', block: 'start'});
+    });
+  }
+
   function type(){
     if(i < text.length){
       cursor.insertAdjacentText('beforebegin', text[i++]);
@@ -1742,38 +1995,28 @@ if(topLogo){
     }
   }
 
-  // effet machine à écrire du lien de prise de RDV : tape une première
-  // phrase d'accroche, l'efface, puis tape le texte final de l'action
+  // effet machine à écrire du lien de prise de RDV : tape successivement
+  // trois phrases (accroche, rappel de l'offre, puis l'action finale),
+  // en effaçant entre chacune — "Première consultation offerte" fait
+  // ainsi partie intégrante de l'animation du bouton, plutôt que d'être
+  // une précision séparée affichée à côté
   function typeRdvText(){
     var rdvEl = document.getElementById('rdv-text');
     if(!rdvEl) return;
-    var first = 'Discutons de votre projet';
-    var second = 'Prendre rendez-vous';
-    var i = 0, j = 0;
+    var phrases = ['Discutons de votre projet', 'Première consultation offerte', 'Prendre rendez-vous'];
+    var phraseIndex = 0;
+    var charIndex = 0;
 
-    function typeFirst(){
-      if(i < first.length){
-        rdvEl.textContent += first[i++];
-        setTimeout(typeFirst, 48);
+    function typePhrase(){
+      var phrase = phrases[phraseIndex];
+      if(charIndex < phrase.length){
+        rdvEl.textContent += phrase[charIndex++];
+        setTimeout(typePhrase, 48);
+      } else if(phraseIndex < phrases.length - 1){
+        setTimeout(erasePhrase, 1500);
       } else {
-        setTimeout(eraseFirst, 1500);
-      }
-    }
-    function eraseFirst(){
-      if(rdvEl.textContent.length){
-        rdvEl.textContent = rdvEl.textContent.slice(0, -1);
-        setTimeout(eraseFirst, 24);
-      } else {
-        setTimeout(typeSecond, 300);
-      }
-    }
-    function typeSecond(){
-      if(j < second.length){
-        rdvEl.textContent += second[j++];
-        setTimeout(typeSecond, 48);
-      } else {
-        // le texte final est tapé : le curseur s'efface et le
-        // soulignement apparaît à sa place, pour signaler le lien
+        // dernière phrase tapée : le curseur s'efface et le soulignement
+        // apparaît à sa place, pour signaler le lien
         var cursorEl = document.getElementById('rdv-cursor');
         if(cursorEl) cursorEl.classList.add('hidden');
         setTimeout(function(){ rdvEl.classList.add('linked'); }, 150);
@@ -1785,7 +2028,17 @@ if(topLogo){
         }, 700);
       }
     }
-    typeFirst();
+    function erasePhrase(){
+      if(rdvEl.textContent.length){
+        rdvEl.textContent = rdvEl.textContent.slice(0, -1);
+        setTimeout(erasePhrase, 24);
+      } else {
+        phraseIndex++;
+        charIndex = 0;
+        setTimeout(typePhrase, 300);
+      }
+    }
+    typePhrase();
   }
 
   // arrivée directe sur #approche, #contact (lien depuis la page Mentions
