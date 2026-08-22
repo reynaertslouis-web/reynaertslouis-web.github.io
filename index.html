@@ -774,10 +774,7 @@ html.intro-lock body{position:fixed;inset:0;width:100%}
 @media (max-width:640px){#approche-scrolldown{display:none}}
 
 /* même indicateur de scroll, cette fois en bas de #contact vers #faq —
-   contrairement à #approche-scrolldown, celui-ci reste visible en
-   mobile : #contact et #faq gardent chacune leur pleine hauteur d'écran
-   sur petit écran (voir #contact/#faq min-height plus bas/haut), la FAQ
-   n'est donc pas "juste à côté" comme l'était #contact depuis #approche */
+   visible en desktop uniquement (voir @media plus bas), à la demande */
 #contact-scrolldown{
   /* inline-flex + width:100% : reste un élément de niveau "inline" (donc
      centré par le text-align:center de .contact-inner comme
@@ -794,6 +791,10 @@ html.intro-lock body{position:fixed;inset:0;width:100%}
 }
 #contact-scrolldown:hover .splash-scroll-label{color:var(--ink)}
 #contact-scrolldown:hover .splash-scroll-arrow{color:var(--ink)}
+/* masquée en mobile, comme #approche-scrolldown ci-dessus (règle
+   déclarée après le bloc non lié à un @media, pour l'emporter à
+   spécificité égale) */
+@media (max-width:640px){#contact-scrolldown{display:none}}
 
 /* ── CONTACT ── même traitement que #approche : bloc centré, même
    z-index:999 pour la même raison (recouvrir #splash grâce à l'ordre du
