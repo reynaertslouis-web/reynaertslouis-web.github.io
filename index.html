@@ -773,32 +773,11 @@ html.intro-lock body{position:fixed;inset:0;width:100%}
    (vient plus tard dans la feuille de style, quel que soit l'écran) */
 @media (max-width:640px){#approche-scrolldown{display:none}}
 
-/* même indicateur de scroll, cette fois en bas de #contact vers #faq —
-   visible en desktop uniquement (voir @media plus bas), à la demande */
-#contact-scrolldown{
-  /* inline-flex + width:100% : reste un élément de niveau "inline" (donc
-     centré par le text-align:center de .contact-inner comme
-     #approche-scrolldown), mais sa largeur à 100% ne laisse plus la
-     place de tenir à côté de .contact-cta (inline-block) qui le précède
-     — il est donc rejeté sur sa propre ligne, comme du texte qui
-     retourne à la ligne faute de place */
-  display:inline-flex;flex-direction:column;align-items:center;gap:.6rem;
-  width:100%;
-  margin-top:3.5rem;
-  background:none;border:none;padding:0;
-  cursor:pointer;
-  -webkit-tap-highlight-color:transparent;
-}
-#contact-scrolldown:hover .splash-scroll-label{color:var(--ink)}
-#contact-scrolldown:hover .splash-scroll-arrow{color:var(--ink)}
-/* masquée en mobile, comme #approche-scrolldown ci-dessus (règle
-   déclarée après le bloc non lié à un @media, pour l'emporter à
-   spécificité égale) */
-@media (max-width:640px){#contact-scrolldown{display:none}}
-
 /* ── CONTACT ── même traitement que #approche : bloc centré, même
    z-index:999 pour la même raison (recouvrir #splash grâce à l'ordre du
-   DOM, sans jamais passer au-dessus des barres fixes à 1000) */
+   DOM, sans jamais passer au-dessus des barres fixes à 1000). Dernière
+   section de la page à nouveau, depuis que la FAQ vit sur sa propre
+   page (faq.html) */
 #contact{
   position:relative;
   z-index:999;
@@ -894,91 +873,6 @@ a.field-value:hover{color:var(--mid)}
   .page-footer{margin-top:3rem}
 }
 
-/* ── FAQ ── section à part entière après Contact, même traitement que
-   Approche/Contact (centrée verticalement dans la fenêtre via
-   min-height:100vh) ; accessible depuis le menu plein écran via un 4e
-   lien "Questions fréquentes", volontairement plus discret que
-   Projets/Approche/Contact (voir .menu-link-faq) */
-#faq{
-  position:relative;
-  z-index:999;
-  background:var(--bg);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  min-height:100vh;
-  min-height:100dvh;
-  padding:6rem 2rem;
-}
-.faq-inner{
-  max-width:720px;
-  width:100%;
-  margin:0 auto;
-}
-.faq-title{
-  font-family:var(--serif);
-  font-style:italic;
-  font-weight:400;
-  font-size:clamp(1.7rem,3.4vw,2.4rem);
-  line-height:1.2;
-  color:var(--ink);
-  text-align:center;
-  margin-bottom:3.2rem;
-}
-.faq-list{
-  border-top:1px solid rgba(17,17,17,.1);
-}
-.faq-item{
-  border-bottom:1px solid rgba(17,17,17,.1);
-}
-.faq-question{
-  width:100%;
-  display:flex;align-items:center;justify-content:space-between;gap:1.4rem;
-  background:none;border:none;cursor:pointer;
-  padding:1.6rem 0;
-  font-family:var(--serif);
-  font-size:clamp(1rem,1.6vw,1.12rem);
-  color:var(--ink);
-  text-align:left;
-  transition:color .2s;
-}
-.faq-question:hover{color:var(--mid)}
-.faq-icon{
-  position:relative;flex:none;
-  width:14px;height:14px;
-}
-.faq-icon span{
-  position:absolute;left:50%;top:50%;
-  background:var(--ink);
-  transform:translate(-50%,-50%);
-}
-.faq-icon span:first-child{width:14px;height:1px}
-.faq-icon span:last-child{width:1px;height:14px;transition:transform .3s ease}
-.faq-question[aria-expanded="true"] .faq-icon span:last-child{transform:translate(-50%,-50%) scaleY(0)}
-.faq-answer-wrap{
-  display:grid;
-  grid-template-rows:0fr;
-  transition:grid-template-rows .35s ease;
-}
-.faq-answer-wrap.is-open{grid-template-rows:1fr}
-.faq-answer{overflow:hidden}
-.faq-answer p{
-  font-family:var(--serif);
-  font-size:clamp(.92rem,1.3vw,1.02rem);
-  line-height:1.85;
-  color:var(--mid);
-  padding-bottom:1.8rem;
-  max-width:640px;
-}
-@media (max-width:640px){
-  /* dernière section de la page (comme #contact ci-dessus) : garde sa
-     pleine hauteur d'écran pour que le lien "Questions fréquentes" du
-     menu puisse l'amener à occuper tout l'écran au scroll */
-  #faq{padding:5rem 1.4rem}
-  .faq-title{margin-bottom:2.4rem}
-  .faq-question{padding:1.3rem 0;font-size:.95rem}
-  .faq-answer p{padding-bottom:1.4rem}
-}
 
 /* barre de contact en bas, symétrique de la topbar — apparaît en même
    temps que le logo + menu, au lancement du diaporama. Barre fixe elle
@@ -1419,92 +1313,6 @@ html.splash-interactive #splash-caption.show{pointer-events:auto}
     </div>
     <p class="contact-note">Nous recevons également sur rendez-vous à Waterloo, au sein d'un de nos projets de rénovation — l'occasion de découvrir notre travail sur place.</p>
     <a class="contact-cta" href="https://calendly.com/louisreynaerts-info/30min?month=2026-08" target="_blank" rel="noopener">Prendre rendez-vous</a>
-    <button type="button" id="contact-scrolldown" aria-label="Aller à la FAQ">
-      <span class="splash-scroll-label">Questions fréquentes</span>
-      <span class="splash-scroll-arrow">↓</span>
-    </button>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-  <div class="faq-inner">
-    <h2 class="faq-title">Questions fréquentes</h2>
-    <div class="faq-list">
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          <span>Le recours à un architecte est-il obligatoire ?</span>
-          <span class="faq-icon"><span></span><span></span></span>
-        </button>
-        <div class="faq-answer-wrap">
-          <div class="faq-answer">
-            <p>En Belgique, la loi impose le recours à un architecte pour tout projet nécessitant un permis d'urbanisme : construction neuve, transformation touchant à la stabilité ou à l'aspect extérieur, changement d'affectation. Seuls certains travaux mineurs explicitement dispensés de permis échappent à cette obligation.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          <span>Quelle est la mission légale de l'architecte ?</span>
-          <span class="faq-icon"><span></span><span></span></span>
-        </button>
-        <div class="faq-answer-wrap">
-          <div class="faq-answer">
-            <p>Elle comprend deux phases : la conception (plans et documents nécessaires à la demande de permis, coordination des études techniques) et le contrôle de l'exécution (suivi des corps de métier jusqu'à la réception des travaux). Chez Louis Reynaerts Architecture, cette mission s'accompagne toujours d'un travail de conception d'intérieurs, pensé dès les premières esquisses.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          <span>Comment sont calculés les honoraires ?</span>
-          <span class="faq-icon"><span></span><span></span></span>
-        </button>
-        <div class="faq-answer-wrap">
-          <div class="faq-answer">
-            <p>Plusieurs méthodes existent (pourcentage de la valeur des travaux, montant au m², forfait, taux horaire) ; nous adaptons la formule à la nature et à la complexité du projet lors d'un premier échange offert. Les taux sont généralement un peu plus élevés pour une rénovation que pour une construction neuve, en raison du travail d'analyse de l'existant.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          <span>L'architecte est-il assuré ?</span>
-          <span class="faq-icon"><span></span><span></span></span>
-        </button>
-        <div class="faq-answer-wrap">
-          <div class="faq-answer">
-            <p>Oui. Comme tous les architectes belges, nous sommes couverts par une assurance responsabilité civile professionnelle et décennale, obligatoire pour tout dommage touchant à la solidité ou à la stabilité de l'ouvrage apparaissant dans les dix ans suivant la réception des travaux.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          <span>Le projet doit-il respecter des exigences énergétiques (PEB) ?</span>
-          <span class="faq-icon"><span></span><span></span></span>
-        </button>
-        <div class="faq-answer-wrap">
-          <div class="faq-answer">
-            <p>Oui, la quasi-totalité des projets soumis à permis d'urbanisme doivent respecter la réglementation PEB, avec des exigences renforcées pour les constructions neuves. Nous intégrons ces exigences dès les premières esquisses, en coordination avec les ingénieurs techniques.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          <span>Dans quelle zone intervenez-vous ?</span>
-          <span class="faq-icon"><span></span><span></span></span>
-        </button>
-        <div class="faq-answer-wrap">
-          <div class="faq-answer">
-            <p>Basée à Waterloo et à Uccle, l'agence intervient dans tout le sud de Bruxelles et le Brabant wallon, ainsi que plus largement en Belgique et à l'étranger selon les projets.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
     <p class="page-footer">© 2026 Louis Reynaerts Architecture · <a href="mentions-legales.html">Mentions légales</a></p>
   </div>
 </section>
@@ -1541,15 +1349,16 @@ function openMenu(){
   // .menu-link (et sa variante mobile) pour qu'elle reste réduite sur
   // petit écran sans jamais affecter le desktop
   var linkStyle='font-family:Georgia,serif;color:#111;text-decoration:none;letter-spacing:-.02em;background:none;border:none;padding:0;margin:0;text-align:left;cursor:pointer;display:block';
-  // "Questions fréquentes" : 4e lien, volontairement à part — pas de
-  // linkStyle (taille/police fixées par .menu-link-faq en CSS, voir plus
-  // haut), pour rester nettement plus discret que les 3 liens principaux
-  var faqLinkStyle='background:none;border:none;padding:0;margin:0;text-align:left;cursor:pointer;display:block';
+  // "FAQ" : 4e lien, volontairement à part — pas de linkStyle (taille/
+  // police fixées par .menu-link-faq en CSS, voir plus haut), pour rester
+  // nettement plus discret que les 3 liens principaux. C'est désormais une
+  // page à part entière (faq.html), donc un simple lien, pas un bouton
+  // scrollIntoView.
   m.innerHTML=`
     <button type="button" class="menu-link" data-action="projets" style="${linkStyle}">Projets,</button>
     <button type="button" class="menu-link" data-action="approche" style="${linkStyle}">Approche,</button>
     <button type="button" class="menu-link" data-action="contact" style="${linkStyle}">Contact,</button>
-    <button type="button" class="menu-link-faq" data-action="faq" style="${faqLinkStyle}">FAQ</button>
+    <a href="faq.html" class="menu-link-faq" style="text-decoration:none;display:block">FAQ</a>
     <button class="menu-cross" aria-label="Fermer le menu" style="position:fixed;left:${cx}px;top:${cy}px"><span></span><span></span></button>
   `;
   document.body.appendChild(m);
@@ -1585,14 +1394,6 @@ function openMenu(){
       if(contactSection) contactSection.scrollIntoView({behavior: 'smooth', block: 'start'});
     });
   }
-  var faqBtn = m.querySelector('[data-action="faq"]');
-  if(faqBtn){
-    faqBtn.addEventListener('click', function(){
-      closeMenu();
-      var faqSection = document.getElementById('faq');
-      if(faqSection) faqSection.scrollIntoView({behavior: 'smooth', block: 'start'});
-    });
-  }
   // laisse le premier rendu (état "+" / opacité 0) s'appliquer avant de
   // déclencher la transition, sinon le navigateur saute directement à
   // l'état final sans animer
@@ -1623,18 +1424,6 @@ if(topLogo){
     }
   });
 }
-
-// FAQ : chaque question se déplie indépendamment (plusieurs peuvent être
-// ouvertes en même temps), via une grille CSS animée (grid-template-rows
-// 0fr → 1fr) plutôt qu'une mesure de hauteur en JS.
-document.querySelectorAll('.faq-question').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    var expanded = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!expanded));
-    var wrap = btn.nextElementSibling;
-    if(wrap) wrap.classList.toggle('is-open', !expanded);
-  });
-});
 
 // ── SPLASH ──
 (function(){
@@ -1944,16 +1733,6 @@ document.querySelectorAll('.faq-question').forEach(function(btn){
   if(approcheScrolldownBtn && contactSection){
     approcheScrolldownBtn.addEventListener('click', function(){
       contactSection.scrollIntoView({behavior: 'smooth', block: 'start'});
-    });
-  }
-
-  // "Questions fréquentes" en bas de #contact : même principe, vers la
-  // section FAQ juste après
-  var contactScrolldownBtn = document.getElementById('contact-scrolldown');
-  var faqSectionEl = document.getElementById('faq');
-  if(contactScrolldownBtn && faqSectionEl){
-    contactScrolldownBtn.addEventListener('click', function(){
-      faqSectionEl.scrollIntoView({behavior: 'smooth', block: 'start'});
     });
   }
 
